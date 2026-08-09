@@ -9,6 +9,7 @@ const About: FC = memo(() => {
   const {profileImageSrc, description, aboutItems} = aboutData;
   return (
     <Section className="bg-neutral-800" sectionId={SectionId.About}>
+      <div className="rounded-xl bg-neutral-900/80 p-6">
       <div className={classNames('grid grid-cols-1 gap-y-4', {'md:grid-cols-4': !!profileImageSrc})}>
         {!!profileImageSrc && (
           <div className="col-span-1 flex justify-center md:justify-start">
@@ -32,6 +33,7 @@ const About: FC = memo(() => {
             ))}
           </ul>
         </div>
+      </div>
       </div>
     </Section>
   );

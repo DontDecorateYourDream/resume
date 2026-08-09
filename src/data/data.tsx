@@ -234,6 +234,7 @@ export const education: TimelineItem[] = [
     ),
   },
   {
+    date:'',
     location: 'South China Normal University',
     title: 'Bachelor of Engineering in Computer Network',
     content: <p>Foundation in network engineering, computer systems, and software development.</p>,

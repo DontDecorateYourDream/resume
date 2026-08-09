@@ -323,8 +323,8 @@ export const contact: ContactSection = {
     },
     {
       type: ContactType.Github,
-      text: 'github.com/alexguo',
-      href: 'https://github.com',
+      text: 'github.com/DontDecorateYourDream',
+      href: 'https://github.com/DontDecorateYourDream',
     },
   ],
 };
@@ -333,6 +333,6 @@ export const contact: ContactSection = {
  * Social items
  */
 export const socialLinks: Social[] = [
-  {label: 'Github', Icon: GithubIcon, href: 'https://github.com'},
-  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://linkedin.com'},
+  {label: 'Github', Icon: GithubIcon, href: 'https://github.com/DontDecorateYourDream'},
+  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'www.linkedin.com/in/mingtao-guo-332398300'},
 ];

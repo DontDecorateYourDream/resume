@@ -9,10 +9,7 @@ import {
 } from '@heroicons/react/24/outline';
 
 import GithubIcon from '../components/Icon/GithubIcon';
-import InstagramIcon from '../components/Icon/InstagramIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
-import StackOverflowIcon from '../components/Icon/StackOverflowIcon';
-import TwitterIcon from '../components/Icon/TwitterIcon';
 import heroImage from '../images/header-background.webp';
 import porfolioImage1 from '../images/portfolio/portfolio-1.jpg';
 import porfolioImage2 from '../images/portfolio/portfolio-2.jpg';
@@ -22,9 +19,6 @@ import porfolioImage5 from '../images/portfolio/portfolio-5.jpg';
 import porfolioImage6 from '../images/portfolio/portfolio-6.jpg';
 import porfolioImage7 from '../images/portfolio/portfolio-7.jpg';
 import porfolioImage8 from '../images/portfolio/portfolio-8.jpg';
-import porfolioImage9 from '../images/portfolio/portfolio-9.jpg';
-import porfolioImage10 from '../images/portfolio/portfolio-10.jpg';
-import porfolioImage11 from '../images/portfolio/portfolio-11.jpg';
 import profilepic from '../images/profilepic.jpg';
 import testimonialImage from '../images/testimonial.webp';
 import {
@@ -44,8 +38,8 @@ import {
  * Page meta data
  */
 export const homePageMeta: HomepageMeta = {
-  title: 'React Resume Template',
-  description: "Example site built with Tim Baker's react resume template",
+  title: 'Alex Guo — IT Manager & Systems Architect',
+  description: 'Personal resume website for Alex Guo, IT Manager and MCS student at Victoria University of Wellington.',
 };
 
 /**
@@ -69,18 +63,20 @@ export type SectionId = (typeof SectionId)[keyof typeof SectionId];
  */
 export const heroData: Hero = {
   imageSrc: heroImage,
-  name: `I'm Tim Baker.`,
+  name: `I'm Alex Guo.`,
   description: (
     <>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        I'm a Victoria based <strong className="text-stone-100">Full Stack Software Engineer</strong>, currently working
-        at <strong className="text-stone-100">Instant Domains</strong> helping build a modern, mobile-first, domain
-        registrar and site builder.
+        Wellington-based <strong className="text-stone-100">IT Manager &amp; Systems Architect</strong> with{' '}
+        <strong className="text-stone-100">12+ years</strong> of progressive experience and four internal promotions
+        at a US-headquartered multinational. Holder of{' '}
+        <strong className="text-stone-100">10+ industry certifications</strong> across project management, cloud
+        systems, cybersecurity, and networking.
       </p>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        In my free time time, you can catch me training in <strong className="text-stone-100">Muay Thai</strong>,
-        plucking my <strong className="text-stone-100">banjo</strong>, or exploring beautiful{' '}
-        <strong className="text-stone-100">Vancouver Island</strong>.
+        Currently completing a{' '}
+        <strong className="text-stone-100">Master of Computer Science at Victoria University of Wellington</strong>,
+        deepening expertise in AI and data-driven systems. Open to part-time and volunteer opportunities.
       </p>
     </>
   ),
@@ -104,16 +100,18 @@ export const heroData: Hero = {
  */
 export const aboutData: About = {
   profileImageSrc: profilepic,
-  description: `Use this bio section as your way of describing yourself and saying what you do, what technologies you like
-  to use or feel most comfortable with, describing your personality, or whatever else you feel like throwing
-  in.`,
+  description: `Results-driven IT leader with 12+ years of progressive experience and four internal promotions
+  from Helpdesk Technician to IT Manager at a US-headquartered multinational manufacturer. Proven track record
+  in leading large-scale infrastructure projects, building cross-functional teams, and delivering process
+  automation with measurable ROI. Currently completing a Master of Computer Science at VUW Wellington,
+  deepening expertise in AI and data-driven systems.`,
   aboutItems: [
-    {label: 'Location', text: 'Victoria, BC', Icon: MapIcon},
-    {label: 'Age', text: '29', Icon: CalendarIcon},
-    {label: 'Nationality', text: 'Canadian / Irish', Icon: FlagIcon},
-    {label: 'Interests', text: 'Motorcycles, Muay Thai, Banjos', Icon: SparklesIcon},
-    {label: 'Study', text: 'University of Victoria', Icon: AcademicCapIcon},
-    {label: 'Employment', text: 'Instant Domains, inc.', Icon: BuildingOffice2Icon},
+    {label: 'Location', text: 'Wellington, New Zealand', Icon: MapIcon},
+    {label: 'Visa', text: 'Student Visa · 20h/wk (term) · Full-time holidays', Icon: CalendarIcon},
+    {label: 'Post-Study', text: 'Open Work Visa eligible Feb 2027', Icon: FlagIcon},
+    {label: 'Interests', text: 'AI, DevOps, Cybersecurity, Conservation', Icon: SparklesIcon},
+    {label: 'Study', text: 'Victoria University of Wellington', Icon: AcademicCapIcon},
+    {label: 'Employment', text: 'Open to part-time & volunteer opportunities', Icon: BuildingOffice2Icon},
   ],
 };
 
@@ -122,210 +120,186 @@ export const aboutData: About = {
  */
 export const skills: SkillGroup[] = [
   {
-    name: 'Spoken languages',
+    name: 'Infrastructure & Virtualisation',
     skills: [
-      {
-        name: 'English',
-        level: 10,
-      },
-      {
-        name: 'French',
-        level: 4,
-      },
-      {
-        name: 'Spanish',
-        level: 3,
-      },
+      {name: 'VMware vSphere', level: 9},
+      {name: 'Hyper-V', level: 9},
+      {name: 'Windows Server', level: 9},
+      {name: 'Linux (RHEL/CentOS)', level: 8},
+      {name: 'Data Centre Planning', level: 9},
     ],
   },
   {
-    name: 'Frontend development',
+    name: 'Networking & Security',
     skills: [
-      {
-        name: 'React',
-        level: 9,
-      },
-      {
-        name: 'Typescript',
-        level: 7,
-      },
-      {
-        name: 'GraphQL',
-        level: 6,
-      },
+      {name: 'Cisco / HPE / FortiNet', level: 8},
+      {name: 'MPLS / VPN / Wireless', level: 8},
+      {name: 'ISO 9001/14000 Compliance', level: 8},
+      {name: 'CompTIA Security+', level: 7},
+      {name: 'CTF Competitions', level: 6},
     ],
   },
   {
-    name: 'Backend development',
+    name: 'Programming & Scripting',
     skills: [
-      {
-        name: 'Node.js',
-        level: 8,
-      },
-      {
-        name: 'Rust',
-        level: 5,
-      },
-      {
-        name: 'Golang',
-        level: 4,
-      },
+      {name: 'Python', level: 6},
+      {name: 'VBA (Advanced)', level: 9},
+      {name: 'JavaScript / PHP', level: 6},
+      {name: 'SQL', level: 7},
+      {name: 'R', level: 5},
     ],
   },
   {
-    name: 'Mobile development',
+    name: 'Cloud & DevOps',
     skills: [
-      {
-        name: 'React Native',
-        level: 9,
-      },
-      {
-        name: 'Flutter',
-        level: 4,
-      },
-      {
-        name: 'Swift',
-        level: 3,
-      },
+      {name: 'Docker / Podman', level: 6},
+      {name: 'Git / GitHub Actions', level: 6},
+      {name: 'Hadoop / Spark (PySpark)', level: 5},
+      {name: 'Nginx / MySQL / SSL', level: 7},
+      {name: 'CI/CD Pipelines', level: 6},
     ],
   },
 ];
 
 /**
- * Portfolio section
+ * Portfolio section — Key Projects
  */
 export const portfolioItems: PortfolioItem[] = [
   {
-    title: 'Project title 1',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
+    title: 'Data Centre Renovation & UPS Integration',
+    description: 'Led Class C renovation; consolidated server cabinets; APC 15KVA + Schneider UPS. Finished 2 months ahead of schedule — commended by IT VP.',
+    url: '#',
     image: porfolioImage1,
   },
   {
-    title: 'Project title 2',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
+    title: 'Cybersecurity Awareness Programme',
+    description: 'Designed and delivered training for 200+ employees. Achieved 95% post-test pass rate; established ongoing spot-check mechanism.',
+    url: '#',
     image: porfolioImage2,
   },
   {
-    title: 'Project title 3',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
+    title: 'Conference System Integration',
+    description: 'Designed & deployed integrated AV solution (Yamaha/Philips/Lenovo). Meeting disruption ↓82%; saved ¥150K in outsourcing costs.',
+    url: '#',
     image: porfolioImage3,
   },
   {
-    title: 'Project title 4',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
+    title: 'Multi-Site Wireless AP Coverage',
+    description: '14 FortiAP-423E-S across 5,000+ sqm; supported 300+ concurrent devices; ensured zero production-line downtime.',
+    url: '#',
     image: porfolioImage4,
   },
   {
-    title: 'Project title 5',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
+    title: 'Process Automation — Document Engine',
+    description: 'VBA + NLP engine: processing time 4 hrs → 8 min per document; saved 3,500 work-hours/year; produced 2 registered software copyrights.',
+    url: '#',
     image: porfolioImage5,
   },
   {
-    title: 'Project title 6',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
+    title: 'New Branch Infrastructure Setup',
+    description: 'Designed scalable Cisco/HP network; deployed Siemens Hipath 1100 PBX; supervised structured cabling and user onboarding.',
+    url: '#',
     image: porfolioImage6,
   },
   {
-    title: 'Project title 7',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
+    title: 'VUW Hackathon — Team 2nd Place',
+    description: 'Competed alongside a cross-disciplinary team over 3 days. Designed and implemented an end-to-end technical solution under time pressure, securing 2nd place.',
+    url: '#',
     image: porfolioImage7,
   },
   {
-    title: 'Project title 8',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
+    title: 'VuwCTF — Ranked 20th / 100+ Teams',
+    description: '2-day Capture The Flag event covering cryptography, forensics, and web exploitation. Solved multiple hard-difficulty challenges as part of a collaborative team.',
+    url: '#',
     image: porfolioImage8,
-  },
-  {
-    title: 'Project title 9',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage9,
-  },
-  {
-    title: 'Project title 10',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage10,
-  },
-  {
-    title: 'Project title 11',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage11,
   },
 ];
 
 /**
- * Resume section -- TODO: Standardize resume contact format or offer MDX
+ * Resume section
  */
 export const education: TimelineItem[] = [
   {
-    date: 'April 2007',
-    location: 'Clown college',
-    title: 'Masters in Beer tasting',
-    content: <p>Describe your experience at school, what you learned, what useful skills you have acquired etc.</p>,
+    date: 'Feb 2026 – Feb 2027 (expected)',
+    location: 'Victoria University of Wellington',
+    title: 'Master of Computer Science',
+    content: (
+      <p>
+        AIML420 Artificial Intelligence (B+) · AIML427 Big Data (A−) · SWEN426 DevOps (B+) ·
+        SWEN435 Database System Engineering (B+).{' '}
+        <br />
+        🏆 VUW Hackathon Team 2nd Place (Apr 2026) ·
+        🏆 VuwCTF Ranked 20th out of 100+ teams (Aug 2026).
+      </p>
+    ),
   },
   {
-    date: 'March 2003',
-    location: 'School of Business',
-    title: 'What did you study 101',
-    content: <p>Describe your experience at school, what you learned, what useful skills you have acquired etc.</p>,
+    date: 'Sep 2015 – Dec 2023',
+    location: 'South China Normal University',
+    title: 'Bachelor of Engineering in Computer Network',
+    content: <p>Foundation in network engineering, computer systems, and software development.</p>,
   },
 ];
 
 export const experience: TimelineItem[] = [
   {
-    date: 'March 2010 - Present',
-    location: 'Awesome Development Company',
-    title: 'Senior UX Engineer',
+    date: 'Sep 2013 – Aug 2025',
+    location: 'Flexfab Rubber Products (Dongguan) Co., Ltd. · US-headquartered',
+    title: 'IT Manager (Four Internal Promotions)',
     content: (
       <p>
-        Describe work, special projects, notable achievements, what technologies you have been working with, and
-        anything else that would be useful for an employer to know.
+        Sole IT lead for a 500+ user multinational manufacturing site. Promoted four times: Technician →
+        Jr. Engineer → Mid Engineer → Supervisor → Manager. Reduced annual operating costs by 15%,
+        deployed VMware/Hyper-V (reliability +20%), led cybersecurity training with 95% pass rate
+        (200+ employees), and built VBA automation saving ~3,500 work-hours/year.
+        Managed MPLS/Aryaka/OKTA dedicated lines, FortiVPN, and led data-centre renovation to Class C standard.
       </p>
     ),
   },
   {
-    date: 'March 2007 - February 2010',
-    location: 'Garage Startup Studio',
-    title: 'Junior bug fixer',
+    date: 'Mar 2013 – Aug 2013',
+    location: 'ASUS Computer (Shanghai) Co., Ltd.',
+    title: 'Circuit Board Technician',
     content: (
       <p>
-        Describe work, special projects, notable achievements, what technologies you have been working with, and
-        anything else that would be useful for an employer to know.
+        Diagnosed and repaired circuit boards (NICs, routers, switches) achieving a 98% success rate.
+        Developed post-repair QA testing protocols to ensure reliability before return to service.
+      </p>
+    ),
+  },
+  {
+    date: 'Feb 2011 – Mar 2013',
+    location: 'Sinopec Shengli Branch · Shandong, China',
+    title: 'Construction Technician',
+    content: (
+      <p>
+        Deployed and maintained petroleum engineering equipment on-site.
+        Ranked 1st in annual safety training evaluations.
       </p>
     ),
   },
 ];
 
 /**
- * Testimonial section
+ * Testimonial section — repurposed for Volunteer & Community
  */
 export const testimonial: TestimonialSection = {
   imageSrc: testimonialImage,
   testimonials: [
     {
-      name: 'John Doe',
-      text: 'Use this as an opportunity to promote what it is like to work with you. High value testimonials include ones from current or past co-workers, managers, or from happy clients.',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/169.jpg',
+      name: 'Zealandia Conservation Volunteer',
+      text: 'Contributing to conservation operations at one of the world\'s first fully fenced urban ecosanctuaries — supporting habitat restoration and wildlife protection for Wellington\'s native species including kiwi, tuatara, and kākā. (Apr 2026 – Present)',
+      image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=200&h=200&fit=crop',
     },
     {
-      name: 'Jane Doe',
-      text: 'Here you should write some nice things that someone has said about you. Encourage them to be specific and include important details (notes about a project you were on together, impressive quality produced, etc).',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/14.jpg',
+      name: 'VUW Hackathon — Team 2nd Place',
+      text: 'Competed alongside a cross-disciplinary team over 3 days (Apr 1–3, 2026). Collaborated closely under intense time pressure to design and implement an end-to-end technical solution, securing 2nd place in the group stage.',
+      image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=200&h=200&fit=crop',
     },
     {
-      name: 'Someone else',
-      text: 'Add several of these, and keep them as fresh as possible, but be sure to focus on quality testimonials with strong highlights of your skills/work ethic.',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/69.jpg',
+      name: 'VuwCTF Cybersecurity Competition',
+      text: 'Ranked 20th out of 100+ participating teams (Aug 2026). Worked closely in a cross-functional team throughout this demanding 2-day CTF event, solving multiple hard-difficulty challenges in cryptography, forensics, and web exploitation.',
+      image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=200&h=200&fit=crop',
     },
   ],
 };
@@ -333,30 +307,24 @@ export const testimonial: TestimonialSection = {
 /**
  * Contact section
  */
-
 export const contact: ContactSection = {
   headerText: 'Get in touch.',
-  description: 'Here is a good spot for a message to your readers to let them know how best to reach out to you.',
+  description: 'I\'m currently open to part-time roles and volunteer research opportunities in Wellington. Feel free to reach out by email or connect on LinkedIn.',
   items: [
     {
       type: ContactType.Email,
-      text: 'reachout@timbaker.me',
-      href: 'mailto:reachout@timbaker.me',
+      text: 'mingtao.guo@outlook.com',
+      href: 'mailto:mingtao.guo@outlook.com',
     },
     {
       type: ContactType.Location,
-      text: 'Victoria BC, Canada',
-      href: 'https://www.google.ca/maps/place/Victoria,+BC/@48.4262362,-123.376775,14z',
-    },
-    {
-      type: ContactType.Instagram,
-      text: '@tbakerx',
-      href: 'https://www.instagram.com/tbakerx/',
+      text: 'Wellington, New Zealand',
+      href: 'https://www.google.com/maps/place/Wellington,+New+Zealand',
     },
     {
       type: ContactType.Github,
-      text: 'tbakerx',
-      href: 'https://github.com/tbakerx',
+      text: 'github.com/alexguo',
+      href: 'https://github.com',
     },
   ],
 };
@@ -365,9 +333,6 @@ export const contact: ContactSection = {
  * Social items
  */
 export const socialLinks: Social[] = [
-  {label: 'Github', Icon: GithubIcon, href: 'https://github.com/tbakerx'},
-  {label: 'Stack Overflow', Icon: StackOverflowIcon, href: 'https://stackoverflow.com/users/8553186/tim-baker'},
-  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/timbakerx/'},
-  {label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/reactresume/'},
-  {label: 'Twitter', Icon: TwitterIcon, href: 'https://twitter.com/TimBakerx'},
+  {label: 'Github', Icon: GithubIcon, href: 'https://github.com'},
+  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://linkedin.com'},
 ];

@@ -234,7 +234,6 @@ export const education: TimelineItem[] = [
     ),
   },
   {
-    date: 'Sep 2015 – Dec 2023',
     location: 'South China Normal University',
     title: 'Bachelor of Engineering in Computer Network',
     content: <p>Foundation in network engineering, computer systems, and software development.</p>,
@@ -334,5 +333,5 @@ export const contact: ContactSection = {
  */
 export const socialLinks: Social[] = [
   {label: 'Github', Icon: GithubIcon, href: 'https://github.com/DontDecorateYourDream'},
-  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'www.linkedin.com/in/mingtao-guo-332398300'},
+  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/mingtao-guo-332398300'},
 ];

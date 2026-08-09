@@ -107,7 +107,7 @@ export const aboutData: About = {
   deepening expertise in AI and data-driven systems.`,
   aboutItems: [
     {label: 'Location', text: 'Wellington, New Zealand', Icon: MapIcon},
-    {label: 'Visa', text: 'Student Visa · 20h/wk (term) · Full-time holidays', Icon: CalendarIcon},
+    {label: 'Visa', text: 'Student Visa · 25h/wk (term) · Full-time holidays', Icon: CalendarIcon},
     {label: 'Post-Study', text: 'Open Work Visa eligible Feb 2027', Icon: FlagIcon},
     {label: 'Interests', text: 'AI, DevOps, Cybersecurity, Conservation', Icon: SparklesIcon},
     {label: 'Study', text: 'Victoria University of Wellington', Icon: AcademicCapIcon},

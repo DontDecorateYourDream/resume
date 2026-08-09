@@ -225,10 +225,9 @@ export const education: TimelineItem[] = [
     title: 'Master of Computer Science',
     content: (
       <p>
-        AIML420 Artificial Intelligence (B+) · AIML427 Big Data (A−) · SWEN426 DevOps (B+) ·
-        SWEN435 Database System Engineering (B+).{' '}
+        Artificial Intelligence · Big Data · DevOps · Database Systems · Cybersecurity · IoT · NoSQL.{' '}
         <br />
-        🏆 VUW Hackathon Team 2nd Place (Apr 2026) ·
+        🏆 VUW Hackathon Team 2nd Place (Apr 2026) ·<br />
         🏆 VuwCTF Ranked 20th out of 100+ teams (Aug 2026).
       </p>
     ),

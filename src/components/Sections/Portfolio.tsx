@@ -1,18 +1,23 @@
 import {ArrowTopRightOnSquareIcon} from '@heroicons/react/24/outline';
 import classNames from 'classnames';
 import Image from 'next/image';
-import {FC, memo, MouseEvent, useCallback, useEffect, useRef, useState} from 'react';
+import {FC, memo, MouseEvent, useCallback, useEffect, useMemo,useRef, useState} from 'react';
 
 import {isMobile} from '../../config';
 import {portfolioItems, SectionId} from '../../data/data';
 import {PortfolioItem} from '../../data/dataDef';
 import useDetectOutsideClick from '../../hooks/useDetectOutsideClick';
+import testimonialImage from '../../images/testimonial.webp';
 import Section from '../Layout/Section';
 
 const Portfolio: FC = memo(() => {
+  const bgStyle = useMemo(() => ({backgroundImage: `url(${(testimonialImage as unknown as {src: string}).src})`}), []);
   return (
-    <Section className="bg-neutral-800" sectionId={SectionId.Portfolio}>
-      <div className="flex flex-col gap-y-8">
+    <Section
+      className="bg-cover bg-center"
+      sectionId={SectionId.Portfolio}
+      style={bgStyle}>
+      <div className="rounded-xl bg-neutral-900/80 p-6 flex flex-col gap-y-8">
         <h2 className="self-center text-xl font-bold text-white">Check out some of my work--this part is in progress</h2>
         <div className=" w-full columns-2 md:columns-3 lg:columns-4">
           {portfolioItems.map((item, index) => {

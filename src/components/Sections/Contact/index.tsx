@@ -4,12 +4,12 @@ import {FC, memo, useEffect, useMemo, useState} from 'react';
 
 import {contact, SectionId} from '../../../data/data';
 import {ContactType, ContactValue} from '../../../data/dataDef';
+import testimonialImage from '../../../images/testimonial.webp';
 import FacebookIcon from '../../Icon/FacebookIcon';
 import GithubIcon from '../../Icon/GithubIcon';
 import InstagramIcon from '../../Icon/InstagramIcon';
 import LinkedInIcon from '../../Icon/LinkedInIcon';
 import TwitterIcon from '../../Icon/TwitterIcon';
-import testimonialImage from '../../../images/testimonial.webp';
 import Section from '../../Layout/Section';
 import ContactForm from './ContactForm';
 

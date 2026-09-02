@@ -1,9 +1,10 @@
 import {DevicePhoneMobileIcon, EnvelopeIcon, MapPinIcon} from '@heroicons/react/24/outline';
 import classNames from 'classnames';
-import {FC, memo} from 'react';
+import {FC, memo, useEffect, useMemo, useState} from 'react';
 
 import {contact, SectionId} from '../../../data/data';
 import {ContactType, ContactValue} from '../../../data/dataDef';
+import testimonialImage from '../../../images/testimonial.webp';
 import FacebookIcon from '../../Icon/FacebookIcon';
 import GithubIcon from '../../Icon/GithubIcon';
 import InstagramIcon from '../../Icon/InstagramIcon';
@@ -25,9 +26,24 @@ const ContactValueMap: Record<ContactType, ContactValue> = {
 
 const Contact: FC = memo(() => {
   const {headerText, description, items} = contact;
+  const [parallaxEnabled, setParallaxEnabled] = useState(false);
+
+  useEffect(() => {
+    const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    setParallaxEnabled(!isMobileDevice);
+  }, []);
+
+  const bgStyle = useMemo(
+    () => ({backgroundImage: `url(${(testimonialImage as unknown as {src: string}).src})`}),
+    [],
+  );
+
   return (
-    <Section className="bg-neutral-800" sectionId={SectionId.Contact}>
-      <div className="flex flex-col gap-y-6">
+    <Section
+      className={['bg-cover', 'bg-center', parallaxEnabled ? 'bg-fixed' : ''].join(' ')}
+      sectionId={SectionId.Contact}
+      style={bgStyle}>
+      <div className="rounded-xl bg-neutral-900/80 p-6 flex flex-col gap-y-6">
         <div className="flex flex-col gap-6 md:flex-row md:items-center">
           <EnvelopeIcon className="hidden h-16 w-16 text-white md:block" />
           <h2 className="text-2xl font-bold text-white">{headerText}</h2>

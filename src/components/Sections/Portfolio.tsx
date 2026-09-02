@@ -11,10 +11,20 @@ import testimonialImage from '../../images/testimonial.webp';
 import Section from '../Layout/Section';
 
 const Portfolio: FC = memo(() => {
-  const bgStyle = useMemo(() => ({backgroundImage: `url(${(testimonialImage as unknown as {src: string}).src})`}), []);
+  const [parallaxEnabled, setParallaxEnabled] = useState(false);
+
+  useEffect(() => {
+    const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    setParallaxEnabled(!isMobileDevice);
+  }, []);
+
+  const bgStyle = useMemo(
+    () => ({backgroundImage: `url(${(testimonialImage as unknown as {src: string}).src})`}),
+    [],
+  );
   return (
     <Section
-      className="bg-cover bg-center"
+      className={['bg-cover', 'bg-center', parallaxEnabled ? 'bg-fixed' : ''].join(' ')}
       sectionId={SectionId.Portfolio}
       style={bgStyle}>
       <div className="rounded-xl bg-neutral-900/80 p-6 flex flex-col gap-y-8">

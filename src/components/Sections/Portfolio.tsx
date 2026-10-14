@@ -1,12 +1,10 @@
 import {ArrowTopRightOnSquareIcon} from '@heroicons/react/24/outline';
 import classNames from 'classnames';
 import Image from 'next/image';
-import {FC, memo, MouseEvent, useCallback, useEffect, useMemo,useRef, useState} from 'react';
+import {FC, memo, useEffect, useMemo, useRef, useState} from 'react';
 
-import {isMobile} from '../../config';
 import {portfolioItems, SectionId} from '../../data/data';
 import {PortfolioItem} from '../../data/dataDef';
-import useDetectOutsideClick from '../../hooks/useDetectOutsideClick';
 import testimonialImage from '../../images/testimonial.webp';
 import Section from '../Layout/Section';
 
@@ -18,32 +16,23 @@ const Portfolio: FC = memo(() => {
     setParallaxEnabled(!isMobileDevice);
   }, []);
 
-  const bgStyle = useMemo(
-    () => ({backgroundImage: `url(${(testimonialImage as unknown as {src: string}).src})`}),
-    [],
-  );
+  const bgStyle = useMemo(() => ({backgroundImage: `url(${(testimonialImage as unknown as {src: string}).src})`}), []);
   return (
     <Section
       className={['bg-cover', 'bg-center', parallaxEnabled ? 'bg-fixed' : ''].join(' ')}
       sectionId={SectionId.Portfolio}
       style={bgStyle}>
-      <div className="rounded-xl bg-neutral-900/80 p-6 flex flex-col gap-y-8">
-        <h2 className="self-center text-xl font-bold text-white">Check out some of my work--this part is in progress</h2>
-        <div className=" w-full columns-2 md:columns-3 lg:columns-4">
-          {portfolioItems.map((item, index) => {
-            const {title, image} = item;
-            return (
-              <div className="pb-6" key={`${title}-${index}`}>
-                <div
-                  className={classNames(
-                    'relative h-max w-full overflow-hidden rounded-lg shadow-lg shadow-black/30 lg:shadow-xl',
-                  )}>
-                  <Image alt={title} className="h-full w-full" placeholder="blur" src={image} />
-                  <ItemOverlay item={item} />
-                </div>
-              </div>
-            );
-          })}
+      <div className="flex flex-col gap-y-8 rounded-xl bg-neutral-900/80 p-6">
+        <div className="flex flex-col items-center gap-y-2 text-center">
+          <h2 className="text-xl font-bold text-white">Selected Projects</h2>
+          <p className="text-sm text-neutral-300">
+            Recent work at Victoria University of Wellington, plus highlights from 12 years in industry.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {portfolioItems.map((item, index) => (
+            <ProjectCard index={index} item={item} key={item.title} />
+          ))}
         </div>
       </div>
     </Section>
@@ -53,47 +42,79 @@ const Portfolio: FC = memo(() => {
 Portfolio.displayName = 'Portfolio';
 export default Portfolio;
 
-const ItemOverlay: FC<{item: PortfolioItem}> = memo(({item: {url, title, description}}) => {
-  const [mobile, setMobile] = useState(false);
-  const [showOverlay, setShowOverlay] = useState(false);
-  const linkRef = useRef<HTMLAnchorElement>(null);
+// Fades each card up as it scrolls into view, staggered across the row.
+const ProjectCard: FC<{item: PortfolioItem; index: number}> = memo(({item, index}) => {
+  const {title, description, context, tags, url, image} = item;
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // Avoid hydration styling errors by setting mobile in useEffect
-    if (isMobile) {
-      setMobile(true);
+    const node = ref.current;
+    if (!node || !('IntersectionObserver' in window)) {
+      setVisible(true);
+      return;
     }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      {threshold: 0.15},
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
   }, []);
-  useDetectOutsideClick(linkRef, () => setShowOverlay(false));
 
-  const handleItemClick = useCallback(
-    (event: MouseEvent<HTMLElement>) => {
-      if (mobile && !showOverlay) {
-        event.preventDefault();
-        setShowOverlay(!showOverlay);
-      }
-    },
-    [mobile, showOverlay],
+  const card = (
+    <div className="flex h-full flex-col overflow-hidden rounded-lg bg-neutral-800/90 shadow-lg shadow-black/30 ring-1 ring-white/10 transition duration-300 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:ring-orange-500/60">
+      <div className="relative aspect-[3/2] overflow-hidden">
+        <Image
+          alt={title}
+          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+          placeholder={typeof image === 'string' ? 'empty' : 'blur'}
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          src={image}
+        />
+      </div>
+      <div className="flex flex-1 flex-col gap-y-2 p-4">
+        <div className="flex items-start justify-between gap-x-2">
+          <h3 className="font-bold text-white">{title}</h3>
+          {url && <ArrowTopRightOnSquareIcon className="mt-1 h-4 w-4 shrink-0 text-orange-400" />}
+        </div>
+        {context && <p className="text-xs font-medium text-orange-400">{context}</p>}
+        <p className="text-sm text-neutral-300">{description}</p>
+        {tags && (
+          <ul className="mt-auto flex flex-wrap gap-2 pt-2">
+            {tags.map(tag => (
+              <li className="rounded-full border border-orange-500/40 px-2 py-0.5 text-xs text-orange-300" key={tag}>
+                {tag}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
   );
 
   return (
-    <a
+    <div
       className={classNames(
-        'absolute inset-0 h-full w-full  bg-gray-900 transition-all duration-300',
-        {'opacity-0 hover:opacity-80': !mobile},
-        showOverlay ? 'opacity-80' : 'opacity-0',
+        'group h-full transition duration-700 ease-out motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none',
+        visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0',
       )}
-      href={url}
-      onClick={handleItemClick}
-      ref={linkRef}
-      target="_blank">
-      <div className="relative h-full w-full p-4">
-        <div className="flex h-full w-full flex-col gap-y-2 overflow-y-auto overscroll-contain">
-          <h2 className="text-center font-bold text-white opacity-100">{title}</h2>
-          <p className="text-xs text-white opacity-100 sm:text-sm">{description}</p>
-        </div>
-        <ArrowTopRightOnSquareIcon className="absolute bottom-1 right-1 h-4 w-4 shrink-0 text-white sm:bottom-2 sm:right-2" />
-      </div>
-    </a>
+      ref={ref}
+      style={{transitionDelay: `${(index % 3) * 120}ms`}}>
+      {url ? (
+        <a className="block h-full" href={url} rel="noopener noreferrer" target="_blank">
+          {card}
+        </a>
+      ) : (
+        card
+      )}
+    </div>
   );
 });
+
+ProjectCard.displayName = 'ProjectCard';

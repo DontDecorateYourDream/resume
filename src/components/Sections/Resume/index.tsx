@@ -34,7 +34,7 @@ const Resume: FC = memo(() => {
           </ResumeSection>
         </div>
         <div className="rounded-xl bg-neutral-900/80 p-6">
-          <ResumeSection title="Work">
+          <ResumeSection title="Experience">
             {experience.map((item, index) => (
               <TimelineItem item={item} key={`${item.title}-${index}`} />
             ))}

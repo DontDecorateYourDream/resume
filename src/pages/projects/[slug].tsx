@@ -72,7 +72,7 @@ const ProjectPage: NextPage<ProjectPageProps> = memo(({slug}) => {
         <nav className="fixed inset-x-0 top-0 z-50 flex items-center justify-between bg-neutral-900/70 px-4 py-3 backdrop-blur sm:px-8">
           <Link
             className="flex items-center gap-x-2 text-sm font-medium text-neutral-200 transition-colors hover:text-orange-400"
-            href="/#portfolio">
+            href="/#projects">
             <ArrowLeftIcon className="h-4 w-4" />
             All projects
           </Link>

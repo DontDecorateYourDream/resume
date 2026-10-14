@@ -5,7 +5,7 @@ import {
   CalendarIcon,
   FlagIcon,
   MapIcon,
-  SparklesIcon,
+  ShieldCheckIcon,
 } from '@heroicons/react/24/outline';
 
 import GithubIcon from '../components/Icon/GithubIcon';
@@ -57,7 +57,7 @@ export const SectionId = {
   Hero: 'hero',
   About: 'about',
   Contact: 'contact',
-  Portfolio: 'portfolio',
+  Portfolio: 'projects',
   Resume: 'resume',
   Skills: 'skills',
   Stats: 'stats',
@@ -95,6 +95,11 @@ export const heroData: Hero = {
       Icon: ArrowDownTrayIcon,
     },
     {
+      href: `#${SectionId.Portfolio}`,
+      text: 'Projects',
+      primary: false,
+    },
+    {
       href: `#${SectionId.Contact}`,
       text: 'Contact',
       primary: false,
@@ -115,7 +120,7 @@ export const aboutData: About = {
     {label: 'Location', text: 'Wellington, New Zealand', Icon: MapIcon},
     {label: 'Availability', text: 'Full-time Dec 2026 – Feb 2027 (student visa)', Icon: CalendarIcon},
     {label: 'Post-Study', text: 'Open Work Visa eligible Feb 2027', Icon: FlagIcon},
-    {label: 'Interests', text: 'Databases, AI, DevOps, Security, Conservation', Icon: SparklesIcon},
+    {label: 'Certifications', text: 'PMP · CompTIA Security+ · CCNA · RHCE · ITIL', Icon: ShieldCheckIcon},
     {label: 'Study', text: 'Victoria University of Wellington', Icon: AcademicCapIcon},
     {label: 'Looking for', text: 'Internships & graduate roles in Wellington', Icon: BuildingOffice2Icon},
   ],
@@ -312,58 +317,71 @@ export const education: TimelineItem[] = [
     location: 'Victoria University of Wellington',
     title: 'Master of Computer Science',
     content: (
-      <p>
-        Artificial Intelligence · Big Data · DevOps · Database Systems · Cybersecurity · IoT · NoSQL.{' '}
-        <br />
-        🏆 VUW Hackathon Team 2nd Place (Apr 2026) ·<br />
-        🏆 VuwCTF Ranked 20th out of 100+ teams (Aug 2026).
-      </p>
+      <ul className="flex list-disc flex-col gap-y-1 pl-5 text-left">
+        <li>Grades so far: A- Big Data · B+ Artificial Intelligence, DevOps and Database System Engineering.</li>
+        <li>
+          Trimester 2 (in progress): Advanced Database Design (99% on coursework so far), Current Topics in AI, IoT,
+          Cybersecurity Attack &amp; Defence.
+        </li>
+        <li>🏆 VUW Hackathon 2026: team 2nd place.</li>
+        <li>🏆 VuwCTF 2026: 22nd of 123 teams (top 18%).</li>
+      </ul>
     ),
   },
   {
-    date:'',
+    date: '',
     location: 'South China Normal University',
     title: 'Bachelor of Engineering in Computer Network',
-    content: <p>Foundation in network engineering, computer systems, and software development.</p>,
+    content: <p>Foundation in network engineering, computer systems and software development.</p>,
   },
 ];
 
 export const experience: TimelineItem[] = [
   {
     date: 'Sep 2013 – Aug 2025',
-    location: 'Flexfab Rubber Products (Dongguan) Co., Ltd. · US-headquartered',
-    title: 'IT Manager (Four Internal Promotions)',
+    location: 'Flexfab Rubber Products (Dongguan) · US-headquartered manufacturer',
+    title: 'IT Manager',
     content: (
-      <p>
-        Sole IT lead for a 500+ user multinational manufacturing site. Promoted four times: Technician →
-        Jr. Engineer → Mid Engineer → Supervisor → Manager. Reduced annual operating costs by 15%,
-        deployed VMware/Hyper-V (reliability +20%), led cybersecurity training with 95% pass rate
-        (200+ employees), and built VBA automation saving ~3,500 work-hours/year.
-        Managed MPLS/Aryaka/OKTA dedicated lines, FortiVPN, and led data-centre renovation to Class C standard.
-      </p>
+      <div className="flex flex-col gap-y-2 text-left">
+        <p>
+          Sole IT lead for a 500+ user site, working with US headquarters, a Shanghai office and vendors. Promoted four
+          times: Technician → Jr. Engineer → Mid Engineer → Supervisor → Manager.
+        </p>
+        <ul className="flex list-disc flex-col gap-y-1 pl-5">
+          <li>Cut annual IT operating costs by 15% through vendor strategy and resource planning.</li>
+          <li>
+            Built a VBA + NLP document engine: 4 hours → 8 minutes per document, ~3,500 work-hours saved a year, 2
+            registered software copyrights.
+          </li>
+          <li>Led a data-centre renovation to national Class C standard, finished two months ahead of schedule.</li>
+          <li>
+            Deployed VMware/Hyper-V (reliability +20%), ran MPLS/Aryaka/Okta lines and FortiVPN, and designed
+            multi-site networks and wireless for 500+ staff.
+          </li>
+          <li>
+            Enforced ISO 9001/14000-aligned security policy (incidents −30%) and trained 200+ employees (95% pass
+            rate).
+          </li>
+        </ul>
+      </div>
     ),
   },
   {
     date: 'Mar 2013 – Aug 2013',
-    location: 'ASUS Computer (Shanghai) Co., Ltd.',
+    location: 'ASUS Computer (Shanghai)',
     title: 'Circuit Board Technician',
     content: (
       <p>
-        Diagnosed and repaired circuit boards (NICs, routers, switches) achieving a 98% success rate.
-        Developed post-repair QA testing protocols to ensure reliability before return to service.
+        Diagnosed and repaired network circuit boards (NICs, routers, switches) with a 98% success rate, and developed
+        post-repair QA tests.
       </p>
     ),
   },
   {
     date: 'Feb 2011 – Mar 2013',
-    location: 'Sinopec Shengli Branch · Shandong, China',
+    location: 'Sinopec Shengli · Shandong, China',
     title: 'Construction Technician',
-    content: (
-      <p>
-        Deployed and maintained petroleum engineering equipment on-site.
-        Ranked 1st in annual safety training evaluations.
-      </p>
-    ),
+    content: <p>Deployed and maintained petroleum engineering equipment on site; ranked 1st in annual safety evaluations.</p>,
   },
 ];
 
@@ -411,6 +429,11 @@ export const contact: ContactSection = {
       type: ContactType.Email,
       text: 'mingtao.guo@outlook.com',
       href: 'mailto:mingtao.guo@outlook.com',
+    },
+    {
+      type: ContactType.LinkedIn,
+      text: 'linkedin.com/in/mingtao-guo-332398300',
+      href: 'https://www.linkedin.com/in/mingtao-guo-332398300',
     },
     {
       type: ContactType.Location,

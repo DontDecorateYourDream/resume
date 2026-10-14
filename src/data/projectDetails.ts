@@ -13,14 +13,15 @@ import datamartRollupImage from '../images/projects/datamart-rollup.jpg';
 import datamartStarSchemaImage from '../images/projects/datamart-star-schema.jpg';
 import devopsDiagramImage from '../images/projects/devops-diagram.jpg';
 import devopsPortImage from '../images/projects/devops-port.jpg';
-import docengineInfographicImage from '../images/projects/docengine-infographic.jpg';
-import flexfabOfficeImage from '../images/projects/flexfab-office.jpg';
+import docengineFlowImage from '../images/projects/docengine-flow.jpg';
+import docengineSpreadsheetImage from '../images/projects/docengine-spreadsheet.jpg';
 import gan7ClassImage from '../images/projects/gan-7-class.jpg';
 import ganCrossDatasetImage from '../images/projects/gan-cross-dataset.jpg';
 import ganEpochImage from '../images/projects/gan-epoch-progression.jpg';
 import hackathonLogoImage from '../images/projects/hackathon-logo.jpg';
 import igniteBenefitsImage from '../images/projects/ignite-benefits.jpg';
 import igniteStageImage from '../images/projects/ignite-stage.jpg';
+import igniteTeamImage from '../images/projects/ignite-team.jpg';
 import incidentAchMatrixImage from '../images/projects/incident-ach-matrix.jpg';
 import incidentAnalystImage from '../images/projects/incident-analyst.jpg';
 import iotArchitectureImage from '../images/projects/iot-architecture.jpg';
@@ -31,7 +32,7 @@ import neo4jSchemaImage from '../images/projects/neo4j-schema.jpg';
 import reconNmapImage from '../images/projects/recon-nmap.jpg';
 import reconPadlockImage from '../images/projects/recon-padlock.jpg';
 import securityTrainingImage from '../images/projects/security-training.jpg';
-import wirelessApImage from '../images/projects/wireless-ap.jpg';
+import wirelessTopologyImage from '../images/projects/wireless-topology.jpg';
 
 /**
  * Long-form content for each project page (/projects/[slug]).
@@ -549,6 +550,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     ],
     stack: ['Consulting', 'Stakeholder research', 'Business case', 'Pitching'],
     gallery: [
+      {image: igniteTeamImage, caption: 'Our Combustion team of four.'},
       {
         image: igniteStageImage,
         caption: 'Presenting “Bridging the Gap: making student talent accessible to small organisations”.',
@@ -670,15 +672,16 @@ export const projectDetails: Record<string, ProjectDetail> = {
   },
 
   'multi-site-wireless-coverage': {
-    summary: 'Enterprise Wi-Fi across more than 5,000 sqm of factory floor without stopping production.',
+    summary:
+      'An enterprise Wi-Fi network across several factory buildings, built on Fortinet FortiAP access points and Cisco Catalyst 9200 switches and rolled out without stopping production.',
     facts: [
       {label: 'Company', value: flexfab},
       {label: 'Role', value: 'IT Engineer, designer and implementer'},
       {label: 'When', value: 'Jun 2019'},
+      {label: 'Hardware', value: 'Fortinet FortiAP 423E-S and 432 · Cisco Catalyst 9200'},
     ],
     metrics: [
-      {value: '14', label: 'FortiAP-423E-S access points'},
-      {value: '5,000+ sqm', label: 'covered'},
+      {value: '5,000+ sqm', label: 'of factory floor covered'},
       {value: '300+', label: 'concurrent devices'},
       {value: '0', label: 'production-line downtime'},
     ],
@@ -686,19 +689,23 @@ export const projectDetails: Record<string, ProjectDetail> = {
       {
         heading: 'What I did',
         points: [
-          'Planned coverage and placed 14 Fortinet FortiAP-423E-S access points across multiple factory buildings.',
+          'Planned coverage across multiple factory buildings and chose enterprise-grade hardware: Fortinet FortiAP access points (14 × FortiAP-423E-S, plus FortiAP 432 models) on Cisco Catalyst 9200 switches.',
           'Rolled the network out around production so no line had to stop.',
-          'Delivered reliable connectivity for more than 300 concurrent devices.',
+          'Delivered reliable connectivity for more than 300 concurrent devices across 5,000+ sqm.',
         ],
       },
     ],
-    stack: ['Fortinet', 'FortiAP', 'Enterprise wireless', 'Network design'],
-    gallery: [{image: wirelessApImage, caption: 'Access point and switch (illustrative photo).'}],
+    stack: ['Fortinet FortiAP 423E-S / 432', 'Cisco Catalyst 9200', 'Enterprise Wi-Fi', 'Network design'],
+    gallery: [
+      {
+        image: wirelessTopologyImage,
+        caption: 'Network design: Cisco Catalyst 9200 switching feeding Fortinet FortiAP access points.',
+      },
+    ],
   },
-
   'document-automation-engine': {
     summary:
-      'A VBA and NLP engine that took a four-hour document task down to eight minutes and earned two registered software copyrights.',
+      'Replaced handwritten shop-floor production records with barcode scanning and an Excel/VBA system: much faster, error-proofed and easy for new staff to learn.',
     facts: [
       {label: 'Company', value: flexfab},
       {label: 'Role', value: 'IT Engineer, designer and developer'},
@@ -712,30 +719,33 @@ export const projectDetails: Record<string, ProjectDetail> = {
     sections: [
       {
         heading: 'The problem',
-        paragraphs: ['Business users spent around four hours producing each document by hand.'],
+        paragraphs: [
+          'Each step of production on the workshop floor was recorded by hand on paper forms and typed up later. A single document took around four hours, errors crept in during re-keying, and new staff needed a long time to learn the forms.',
+        ],
       },
       {
-        heading: 'What I did',
+        heading: 'What I built',
         points: [
-          'Worked with the users to understand the documents and the rules behind them.',
-          'Built an automation engine in VBA with NLP techniques to generate the documents.',
-          'Rolled out related VBA reporting tools that halved data-report processing time.',
+          'Replaced handwriting with barcode scanning: operators scan work orders and parts with a handheld scanner instead of filling in forms.',
+          'Moved everything else onto the computer in Excel, with VBA handling data capture, checks and document generation.',
+          'Built in error-proofing: VBA validates every scan, so wrong or missing entries are caught at the source rather than discovered later.',
+          'Kept it simple enough that new staff become productive quickly: scan, check, done.',
         ],
       },
       {
         heading: 'Result',
         paragraphs: [
-          'Each document now takes about eight minutes, saving roughly 3,500 work-hours a year. The work was registered as two software copyrights.',
+          'A document now takes about eight minutes instead of four hours, saving roughly 3,500 work-hours a year. Production data is cleaner and much easier to manage and report on. The system was registered as two software copyrights.',
         ],
       },
     ],
-    stack: ['VBA', 'NLP', 'Excel / Office automation', 'Process automation'],
+    stack: ['VBA', 'Excel', 'Barcode scanning', 'Error-proofing', 'Process automation'],
     gallery: [
       {
-        image: docengineInfographicImage,
-        caption: 'The headline result: four hours down to eight minutes per document.',
+        image: docengineFlowImage,
+        caption: 'How it works: barcode scans flow into Excel, where VBA checks each entry and produces the documents.',
       },
-      {image: flexfabOfficeImage, caption: 'At Flexfab, where I spent 12 years in IT.'},
+      {image: docengineSpreadsheetImage, caption: 'Spreadsheet-based data processing (illustrative photo).'},
     ],
   },
 };

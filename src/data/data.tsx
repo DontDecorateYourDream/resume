@@ -123,8 +123,8 @@ export const aboutData: About = {
   databases, big data, AI and security.`,
   aboutItems: [
     {label: 'Location', text: 'Wellington, New Zealand', Icon: MapIcon},
-    {label: 'Availability', text: 'Full-time Dec 2026 – Feb 2027 (student visa)', Icon: CalendarIcon},
-    {label: 'Post-Study', text: 'Open Work Visa eligible Feb 2027', Icon: FlagIcon},
+    {label: 'Availability', text: 'Full-time Dec 2026 – Feb 2027', Icon: CalendarIcon},
+    {label: 'Work rights', text: 'Student visa; post-study open work visa from Feb 2027', Icon: FlagIcon},
     {label: 'Certifications', text: 'PMP · CompTIA Security+ · CCNA · RHCE · ITIL', Icon: ShieldCheckIcon},
     {label: 'Study', text: 'Victoria University of Wellington', Icon: AcademicCapIcon},
     {label: 'Looking for', text: 'Internships & graduate roles in Wellington', Icon: BuildingOffice2Icon},
@@ -170,7 +170,7 @@ export const skills: SkillGroup[] = [
     skills: [
       {name: 'VMware vSphere / Hyper-V', level: 9},
       {name: 'Windows Server / RHEL', level: 8},
-      {name: 'Cisco / HPE / FortiNet', level: 8},
+      {name: 'Cisco / HPE / Fortinet', level: 8},
       {name: 'ISO 9001/14000 Compliance', level: 8},
       {name: 'CompTIA Security+', level: 7},
     ],
@@ -225,7 +225,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: 'Sales Data Mart & OLAP',
     slug: 'sales-data-mart',
     category: 'university',
-    context: 'SWEN432 Advanced Database Design',
+    context: 'SWEN432 Advanced Databases',
     description:
       'Built a star-schema data mart (time dimension + sales fact) from an operational book-order database, then answered business questions with OLAP aggregates, materialised views and window functions. Load reconciled to the cent against source totals.',
     tags: ['PostgreSQL', 'SQL', 'Data warehousing'],
@@ -282,7 +282,7 @@ export const portfolioItems: PortfolioItem[] = [
     image: hackathonImage,
   },
   {
-    title: 'Ignite Consulting Project',
+    title: 'Consulting Challenge for Summer of Tech',
     slug: 'ignite-consulting-project',
     category: 'university',
     context: 'Ignite Consultants · Combustion 2026',
@@ -292,13 +292,12 @@ export const portfolioItems: PortfolioItem[] = [
     image: igniteImage,
   },
   {
-    title: 'Document Automation Engine',
+    title: 'Shop-Floor Barcode Automation',
     slug: 'document-automation-engine',
     category: 'industry',
     context: 'Flexfab · Sep 2018',
-    description:
-      'VBA + NLP engine that cut document processing from 4 hours to 8 minutes, saving ~3,500 work-hours a year. Two registered software copyrights.',
-    tags: ['VBA', 'NLP', 'Automation'],
+    description: 'Replaced handwritten production records with barcode scanning and an Excel/VBA system: 4 hours to 8 minutes per document, error-proofed and easy to learn.',
+    tags: ['VBA', 'Excel', 'Barcode scanning'],
     image: documentEngineImage,
   },
   {
@@ -312,13 +311,12 @@ export const portfolioItems: PortfolioItem[] = [
     image: dataCentreImage,
   },
   {
-    title: 'Multi-Site Wireless Coverage',
+    title: 'Multi-Site Enterprise Wi-Fi',
     slug: 'multi-site-wireless-coverage',
     category: 'industry',
     context: 'Flexfab · Jun 2019',
-    description:
-      '14 FortiAP-423E-S access points across 5,000+ sqm of factory floor, supporting 300+ concurrent devices with zero production-line downtime.',
-    tags: ['Fortinet', 'Wireless', 'Site survey'],
+    description: 'Fortinet FortiAP access points on Cisco Catalyst 9200 switches across 5,000+ sqm, 300+ devices, zero production downtime.',
+    tags: ['Fortinet FortiAP', 'Cisco Catalyst 9200', 'Enterprise Wi-Fi'],
     image: wirelessCoverageImage,
   },
   {
@@ -368,8 +366,7 @@ export const education: TimelineItem[] = [
           Trimester 2 (in progress): Advanced Database Design (99% on coursework so far), Current Topics in AI, IoT,
           Cybersecurity Attack &amp; Defence.
         </li>
-        <li>🏆 VUW Hackathon 2026: team 2nd place.</li>
-        <li>🏆 VuwCTF 2026: 22nd of 123 teams (top 18%).</li>
+        <li>Awards: VUW Hackathon 2026, team 2nd place · VuwCTF 2026, 22nd of 123 teams (top 18%).</li>
       </ul>
     ),
   },
@@ -395,13 +392,13 @@ export const experience: TimelineItem[] = [
         <ul className="flex list-disc flex-col gap-y-1 pl-5">
           <li>Cut annual IT operating costs by 15% through vendor strategy and resource planning.</li>
           <li>
-            Built a VBA + NLP document engine: 4 hours → 8 minutes per document, ~3,500 work-hours saved a year, 2
-            registered software copyrights.
+            Replaced handwritten shop-floor records with barcode scanning and an Excel/VBA system: 4 hours → 8 minutes
+            per document, ~3,500 work-hours saved a year, 2 registered software copyrights.
           </li>
           <li>Led a data-centre renovation to national Class C standard, finished two months ahead of schedule.</li>
           <li>
             Deployed VMware/Hyper-V (reliability +20%), ran MPLS/Aryaka/Okta lines and FortiVPN, and designed
-            multi-site networks and wireless for 500+ staff.
+            multi-site networks and enterprise Wi-Fi (Cisco Catalyst 9200, Fortinet FortiAP) for 500+ staff.
           </li>
           <li>
             Enforced ISO 9001/14000-aligned security policy (incidents −30%) and trained 200+ employees (95% pass

@@ -11,14 +11,19 @@ import {
 import GithubIcon from '../components/Icon/GithubIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
 import heroImage from '../images/header-background.webp';
-import porfolioImage1 from '../images/portfolio/portfolio-1.jpg';
-import porfolioImage2 from '../images/portfolio/portfolio-2.jpg';
-import porfolioImage3 from '../images/portfolio/portfolio-3.jpg';
-import porfolioImage4 from '../images/portfolio/portfolio-4.jpg';
-import porfolioImage5 from '../images/portfolio/portfolio-5.jpg';
-import porfolioImage6 from '../images/portfolio/portfolio-6.jpg';
-import porfolioImage7 from '../images/portfolio/portfolio-7.jpg';
-import porfolioImage8 from '../images/portfolio/portfolio-8.jpg';
+import beijingHousingImage from '../images/portfolio/beijing-housing.jpg';
+import branchNetworkImage from '../images/portfolio/branch-network.jpg';
+import conditionalGanImage from '../images/portfolio/conditional-gan.jpg';
+import conferenceSystemImage from '../images/portfolio/conference-system.jpg';
+import dataCentreImage from '../images/portfolio/data-centre.jpg';
+import devopsContainersImage from '../images/portfolio/devops-containers.jpg';
+import documentEngineImage from '../images/portfolio/document-engine.jpg';
+import hackathonImage from '../images/portfolio/hackathon.jpg';
+import igniteImage from '../images/portfolio/ignite.jpg';
+import iotWaterImage from '../images/portfolio/iot-water.jpg';
+import postgresDataMartImage from '../images/portfolio/postgres-data-mart.jpg';
+import securityAwarenessImage from '../images/portfolio/security-awareness.jpg';
+import wirelessCoverageImage from '../images/portfolio/wireless-coverage.jpg';
 import profilepic from '../images/profilepic.jpg';
 import testimonialImage from '../images/testimonial.webp';
 import {
@@ -162,56 +167,126 @@ export const skills: SkillGroup[] = [
 ];
 
 /**
- * Portfolio section — Key Projects
+ * Portfolio section — Selected Projects
  */
 export const portfolioItems: PortfolioItem[] = [
   {
-    title: 'Data Centre Renovation & UPS Integration',
-    description: 'Led Class C renovation; consolidated server cabinets; APC 15KVA + Schneider UPS. Finished 2 months ahead of schedule — commended by IT VP.',
-    url: '#',
-    image: porfolioImage1,
+    title: 'Beijing Housing Price Prediction',
+    category: 'university',
+    context: 'AIML427 Big Data · Individual project',
+    description:
+      'Distributed Spark MLlib pipeline on the ECS Hadoop/YARN cluster. Cleaned 318K Lianjia listings and engineered 45 Beijing-specific features (ring roads, floor taboos, tax policy) with a leakage-free design. Test R² 0.805; feature scaling cut training time 6.6×.',
+    tags: ['PySpark', 'Spark MLlib', 'Hadoop / HDFS', 'Feature engineering'],
+    image: beijingHousingImage,
+  },
+  {
+    title: 'Sales Data Mart & OLAP',
+    category: 'university',
+    context: 'SWEN432 Advanced Database Design',
+    description:
+      'Built a star-schema data mart (time dimension + sales fact) from an operational book-order database, then answered business questions with OLAP aggregates, materialised views and window functions. Load reconciled to the cent against source totals.',
+    tags: ['PostgreSQL', 'SQL', 'Data warehousing'],
+    image: postgresDataMartImage,
+  },
+  {
+    title: 'Conditional DCGAN',
+    category: 'university',
+    context: 'AIML431 Current Topics in AI',
+    description:
+      'Implemented a DCGAN for EMNIST handwritten characters, then extended it to a conditional GAN that generates a chosen character class on demand, with 3- and 7-class experiments.',
+    tags: ['PyTorch', 'GANs', 'Deep learning'],
+    image: conditionalGanImage,
+  },
+  {
+    title: 'Smart Water IoT Architecture',
+    category: 'university',
+    context: 'SWEN428 Internet of Things',
+    description:
+      'Consultancy-style RFP response for a regional water network with 3,500 km of pipes: a hybrid LoRaWAN + cellular design, three traffic classes and a 15-year battery feasibility estimate.',
+    tags: ['IoT', 'LoRaWAN', 'Solution architecture'],
+    image: iotWaterImage,
+  },
+  {
+    title: 'Containerised WordPress Stack',
+    category: 'university',
+    context: 'SWEN426 DevOps',
+    description:
+      'Built a custom CI container image and containerised WordPress with nginx and MySQL using Podman Compose, with persistent storage and a GitLab issue → merge-request workflow.',
+    tags: ['Podman', 'Containers', 'GitLab', 'nginx'],
+    image: devopsContainersImage,
+  },
+  {
+    title: 'VUW Hackathon — 2nd Place',
+    category: 'university',
+    context: 'Team project · Apr 2026',
+    description:
+      'Three-day team build of “glasshouse”, a full-stack web app with a Python/Supabase backend and a React + TypeScript frontend. Awarded second place.',
+    tags: ['Teamwork', 'React', 'Python'],
+    url: 'https://github.com/joshuapinpin/glasshouse',
+    image: hackathonImage,
+  },
+  {
+    title: 'Ignite Consulting Project',
+    category: 'university',
+    context: 'Student consulting · supported by Deloitte',
+    description:
+      'Part of a student consulting team that researched and presented “Bridging the Gap” — a proposal for making student talent accessible to small organisations.',
+    tags: ['Consulting', 'Research', 'Presentation'],
+    image: igniteImage,
+  },
+  {
+    title: 'Data Centre Renovation & UPS',
+    category: 'industry',
+    context: 'Flexfab · Nov 2024 – Jan 2025',
+    description:
+      'Led a renovation to national Class C standard: consolidated server cabinets and integrated APC 15 kVA + Schneider UPS. Finished 2 months ahead of schedule and commended by the IT VP.',
+    tags: ['Data centre', 'UPS / power', 'Project management'],
+    image: dataCentreImage,
   },
   {
     title: 'Cybersecurity Awareness Programme',
-    description: 'Designed and delivered training for 200+ employees. Achieved 95% post-test pass rate; established ongoing spot-check mechanism.',
-    url: '#',
-    image: porfolioImage2,
+    category: 'industry',
+    context: 'Flexfab · Aug 2024',
+    description:
+      'Designed and delivered security training for 200+ employees, reaching a 95% post-test pass rate, and set up ongoing spot checks.',
+    tags: ['Security awareness', 'Training', 'ISO 9001/14000'],
+    image: securityAwarenessImage,
   },
   {
     title: 'Conference System Integration',
-    description: 'Designed & deployed integrated AV solution (Yamaha/Philips/Lenovo). Meeting disruption ↓82%; saved ¥150K in outsourcing costs.',
-    url: '#',
-    image: porfolioImage3,
+    category: 'industry',
+    context: 'Flexfab · May 2023',
+    description:
+      'Designed and deployed an integrated AV and video-conferencing solution in-house. Meeting disruptions fell 82% and outsourcing costs dropped by ¥150K.',
+    tags: ['AV / video conferencing', 'Yamaha / Philips / Lenovo', 'Vendor management'],
+    image: conferenceSystemImage,
   },
   {
-    title: 'Multi-Site Wireless AP Coverage',
-    description: '14 FortiAP-423E-S across 5,000+ sqm; supported 300+ concurrent devices; ensured zero production-line downtime.',
-    url: '#',
-    image: porfolioImage4,
+    title: 'New Branch Infrastructure',
+    category: 'industry',
+    context: 'Flexfab · Jul 2021',
+    description:
+      'Designed a scalable Cisco/HP network for a new branch, deployed a Siemens HiPath 1100 PBX, and supervised structured cabling and user onboarding.',
+    tags: ['Cisco / HP', 'Telephony', 'Structured cabling'],
+    image: branchNetworkImage,
   },
   {
-    title: 'Process Automation — Document Engine',
-    description: 'VBA + NLP engine: processing time 4 hrs → 8 min per document; saved 3,500 work-hours/year; produced 2 registered software copyrights.',
-    url: '#',
-    image: porfolioImage5,
+    title: 'Multi-Site Wireless Coverage',
+    category: 'industry',
+    context: 'Flexfab · Jun 2019',
+    description:
+      '14 FortiAP-423E-S access points across 5,000+ sqm of factory floor, supporting 300+ concurrent devices with zero production-line downtime.',
+    tags: ['Fortinet', 'Wireless', 'Site survey'],
+    image: wirelessCoverageImage,
   },
   {
-    title: 'New Branch Infrastructure Setup',
-    description: 'Designed scalable Cisco/HP network; deployed Siemens Hipath 1100 PBX; supervised structured cabling and user onboarding.',
-    url: '#',
-    image: porfolioImage6,
-  },
-  {
-    title: 'VUW Hackathon — Team 2nd Place',
-    description: 'Competed alongside a cross-disciplinary team over 3 days. Designed and implemented an end-to-end technical solution under time pressure, securing 2nd place.',
-    url: '#',
-    image: porfolioImage7,
-  },
-  {
-    title: 'VuwCTF — Ranked 20th / 100+ Teams',
-    description: '2-day Capture The Flag event covering cryptography, forensics, and web exploitation. Solved multiple hard-difficulty challenges as part of a collaborative team.',
-    url: '#',
-    image: porfolioImage8,
+    title: 'Document Automation Engine',
+    category: 'industry',
+    context: 'Flexfab · Sep 2018',
+    description:
+      'VBA + NLP engine that cut document processing from 4 hours to 8 minutes, saving ~3,500 work-hours a year. Two registered software copyrights.',
+    tags: ['VBA', 'NLP', 'Automation'],
+    image: documentEngineImage,
   },
 ];
 

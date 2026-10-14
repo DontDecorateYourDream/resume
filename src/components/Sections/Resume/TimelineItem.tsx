@@ -10,8 +10,12 @@ const TimelineItem: FC<{item: TimelineItem}> = memo(({item}) => {
         <h2 className="text-xl font-bold text-neutral-100">{title}</h2>
         <div className="flex items-center justify-center gap-x-2 md:justify-start">
           <span className="flex-1 text-sm font-medium italic text-orange-400 sm:flex-none">{location}</span>
-          <span className="text-neutral-400">•</span>
-          <span className="flex-1 text-sm text-neutral-300 sm:flex-none">{date}</span>
+          {date && (
+            <>
+              <span className="text-neutral-400">•</span>
+              <span className="flex-1 text-sm text-neutral-300 sm:flex-none">{date}</span>
+            </>
+          )}
         </div>
       </div>
       <div className="text-neutral-300">{content}</div>

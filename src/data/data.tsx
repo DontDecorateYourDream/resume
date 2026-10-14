@@ -13,6 +13,7 @@ import LinkedInIcon from '../components/Icon/LinkedInIcon';
 import zealandiaImage from '../images/community/zealandia.jpg';
 import heroImage from '../images/header-background.webp';
 import beijingHousingImage from '../images/portfolio/beijing-housing.jpg';
+import bleSensorNetworkImage from '../images/portfolio/ble-sensor-network.jpg';
 import branchNetworkImage from '../images/portfolio/branch-network.jpg';
 import conditionalGanImage from '../images/portfolio/conditional-gan.jpg';
 import conferenceSystemImage from '../images/portfolio/conference-system.jpg';
@@ -21,8 +22,11 @@ import devopsContainersImage from '../images/portfolio/devops-containers.jpg';
 import documentEngineImage from '../images/portfolio/document-engine.jpg';
 import hackathonImage from '../images/portfolio/hackathon.jpg';
 import igniteImage from '../images/portfolio/ignite.jpg';
+import incidentInvestigationImage from '../images/portfolio/incident-investigation.jpg';
 import iotWaterImage from '../images/portfolio/iot-water.jpg';
+import neo4jGraphImage from '../images/portfolio/neo4j-graph.jpg';
 import postgresDataMartImage from '../images/portfolio/postgres-data-mart.jpg';
+import reconOsintImage from '../images/portfolio/recon-osint.jpg';
 import securityAwarenessImage from '../images/portfolio/security-awareness.jpg';
 import wirelessCoverageImage from '../images/portfolio/wireless-coverage.jpg';
 import profilepic from '../images/profilepic.jpg';
@@ -172,6 +176,7 @@ export const skills: SkillGroup[] = [
 export const portfolioItems: PortfolioItem[] = [
   {
     title: 'Beijing Housing Price Prediction',
+    slug: 'beijing-housing-price-prediction',
     category: 'university',
     context: 'AIML427 Big Data · Individual project',
     description:
@@ -180,7 +185,38 @@ export const portfolioItems: PortfolioItem[] = [
     image: beijingHousingImage,
   },
   {
+    title: 'BLE Sensor Network on Real Hardware',
+    slug: 'ble-sensor-network',
+    category: 'university',
+    context: 'SWEN428 Internet of Things · Project 2',
+    description:
+      'Bluetooth Low Energy gateway, sensors and relay in C on RIOT OS, measured on the FIT IoT-LAB testbed: 100/100 discoveries under 100 ms.',
+    tags: ['C', 'RIOT OS', 'BLE / NimBLE', 'FIT IoT-LAB'],
+    image: bleSensorNetworkImage,
+  },
+  {
+    title: 'Graph Analytics & Anomaly Hunt in Neo4j',
+    slug: 'neo4j-graph-analytics',
+    category: 'university',
+    context: 'SWEN432 Advanced Databases · 99/100',
+    description:
+      'Cypher and Graph Data Science on a 6,583-node network; traced 62 anomalous centrality scores to their root cause and found 101+ duplicate records.',
+    tags: ['Neo4j', 'Cypher', 'Graph Data Science'],
+    image: neo4jGraphImage,
+  },
+  {
+    title: 'Incident Investigation with ACH',
+    slug: 'incident-investigation-ach',
+    category: 'university',
+    context: 'CYBR471 Cybersecurity Attack & Defence',
+    description:
+      'Weighed 21 evidence records with Analysis of Competing Hypotheses to judge how a server was breached, then wrote a 200-word decision brief.',
+    tags: ['Incident response', 'ACH', 'Threat intelligence'],
+    image: incidentInvestigationImage,
+  },
+  {
     title: 'Sales Data Mart & OLAP',
+    slug: 'sales-data-mart',
     category: 'university',
     context: 'SWEN432 Advanced Database Design',
     description:
@@ -189,7 +225,18 @@ export const portfolioItems: PortfolioItem[] = [
     image: postgresDataMartImage,
   },
   {
+    title: 'Recon, OSINT & Boot2Root',
+    slug: 'recon-osint-boot2root',
+    category: 'university',
+    context: 'CYBR471 Cybersecurity Attack & Defence',
+    description:
+      'Authorised reconnaissance, a passive OSINT assessment, bounded Nmap enumeration and hands-on Boot2Root exploitation.',
+    tags: ['Kali Linux', 'OSINT', 'Nmap'],
+    image: reconOsintImage,
+  },
+  {
     title: 'Conditional DCGAN',
+    slug: 'conditional-dcgan',
     category: 'university',
     context: 'AIML431 Current Topics in AI',
     description:
@@ -199,6 +246,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     title: 'Smart Water IoT Architecture',
+    slug: 'smart-water-iot-architecture',
     category: 'university',
     context: 'SWEN428 Internet of Things',
     description:
@@ -208,6 +256,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     title: 'Containerised WordPress Stack',
+    slug: 'containerised-wordpress-stack',
     category: 'university',
     context: 'SWEN426 DevOps',
     description:
@@ -217,25 +266,37 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     title: 'VUW Hackathon — 2nd Place',
+    slug: 'vuw-hackathon-glasshouse',
     category: 'university',
     context: 'Team project · Apr 2026',
     description:
       'Three-day team build of “glasshouse”, a full-stack web app with a Python/Supabase backend and a React + TypeScript frontend. Awarded second place.',
     tags: ['Teamwork', 'React', 'Python'],
-    url: 'https://github.com/joshuapinpin/glasshouse',
     image: hackathonImage,
   },
   {
     title: 'Ignite Consulting Project',
+    slug: 'ignite-consulting-project',
     category: 'university',
-    context: 'Student consulting · supported by Deloitte',
+    context: 'Ignite Consultants · Combustion 2026',
     description:
-      'Part of a student consulting team that researched and presented “Bridging the Gap” — a proposal for making student talent accessible to small organisations.',
+      'One-day consulting challenge for client Summer of Tech. Our team researched and pitched “Bridging the Gap”, a proposal for making student talent accessible to small organisations.',
     tags: ['Consulting', 'Research', 'Presentation'],
     image: igniteImage,
   },
   {
+    title: 'Document Automation Engine',
+    slug: 'document-automation-engine',
+    category: 'industry',
+    context: 'Flexfab · Sep 2018',
+    description:
+      'VBA + NLP engine that cut document processing from 4 hours to 8 minutes, saving ~3,500 work-hours a year. Two registered software copyrights.',
+    tags: ['VBA', 'NLP', 'Automation'],
+    image: documentEngineImage,
+  },
+  {
     title: 'Data Centre Renovation & UPS',
+    slug: 'data-centre-renovation',
     category: 'industry',
     context: 'Flexfab · Nov 2024 – Jan 2025',
     description:
@@ -244,34 +305,8 @@ export const portfolioItems: PortfolioItem[] = [
     image: dataCentreImage,
   },
   {
-    title: 'Cybersecurity Awareness Programme',
-    category: 'industry',
-    context: 'Flexfab · Aug 2024',
-    description:
-      'Designed and delivered security training for 200+ employees, reaching a 95% post-test pass rate, and set up ongoing spot checks.',
-    tags: ['Security awareness', 'Training', 'ISO 9001/14000'],
-    image: securityAwarenessImage,
-  },
-  {
-    title: 'Conference System Integration',
-    category: 'industry',
-    context: 'Flexfab · May 2023',
-    description:
-      'Designed and deployed an integrated AV and video-conferencing solution in-house. Meeting disruptions fell 82% and outsourcing costs dropped by ¥150K.',
-    tags: ['AV / video conferencing', 'Yamaha / Philips / Lenovo', 'Vendor management'],
-    image: conferenceSystemImage,
-  },
-  {
-    title: 'New Branch Infrastructure',
-    category: 'industry',
-    context: 'Flexfab · Jul 2021',
-    description:
-      'Designed a scalable Cisco/HP network for a new branch, deployed a Siemens HiPath 1100 PBX, and supervised structured cabling and user onboarding.',
-    tags: ['Cisco / HP', 'Telephony', 'Structured cabling'],
-    image: branchNetworkImage,
-  },
-  {
     title: 'Multi-Site Wireless Coverage',
+    slug: 'multi-site-wireless-coverage',
     category: 'industry',
     context: 'Flexfab · Jun 2019',
     description:
@@ -280,13 +315,34 @@ export const portfolioItems: PortfolioItem[] = [
     image: wirelessCoverageImage,
   },
   {
-    title: 'Document Automation Engine',
+    title: 'Cybersecurity Awareness Programme',
+    slug: 'cybersecurity-awareness-programme',
     category: 'industry',
-    context: 'Flexfab · Sep 2018',
+    context: 'Flexfab · Aug 2024',
     description:
-      'VBA + NLP engine that cut document processing from 4 hours to 8 minutes, saving ~3,500 work-hours a year. Two registered software copyrights.',
-    tags: ['VBA', 'NLP', 'Automation'],
-    image: documentEngineImage,
+      'Designed and delivered security training for 200+ employees, reaching a 95% post-test pass rate, and set up ongoing spot checks.',
+    tags: ['Security awareness', 'Training', 'ISO 9001/14000'],
+    image: securityAwarenessImage,
+  },
+  {
+    title: 'New Branch Infrastructure',
+    slug: 'new-branch-infrastructure',
+    category: 'industry',
+    context: 'Flexfab · Jul 2021',
+    description:
+      'Designed a scalable Cisco/HP network for a new branch, deployed a Siemens HiPath 1100 PBX, and supervised structured cabling and user onboarding.',
+    tags: ['Cisco / HP', 'Telephony', 'Structured cabling'],
+    image: branchNetworkImage,
+  },
+  {
+    title: 'Conference System Integration',
+    slug: 'conference-system-integration',
+    category: 'industry',
+    context: 'Flexfab · May 2023',
+    description:
+      'Designed and deployed an integrated AV and video-conferencing solution in-house. Meeting disruptions fell 82% and outsourcing costs dropped by ¥150K.',
+    tags: ['AV / video conferencing', 'Yamaha / Philips / Lenovo', 'Vendor management'],
+    image: conferenceSystemImage,
   },
 ];
 

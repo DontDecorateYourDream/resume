@@ -8,6 +8,10 @@ module.exports = {
         yellow: '#efc603',
       },
       keyframes: {
+        'fade-up': {
+          '0%': {opacity: 0, transform: 'translateY(16px)'},
+          '100%': {opacity: 1, transform: 'translateY(0)'},
+        },
         typing: {
           '0%, 100%': {width: '0%'},
           '30%, 70%': {width: '100%'},
@@ -27,6 +31,9 @@ module.exports = {
             strokeDashoffset: '-360%',
           },
         },
+      },
+      animation: {
+        'fade-up': 'fade-up 0.8s ease-out both',
       },
       screens: {
         touch: {raw: 'only screen and (pointer: coarse)'},

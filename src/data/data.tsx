@@ -10,6 +10,7 @@ import {
 
 import GithubIcon from '../components/Icon/GithubIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
+import kiteaAkoImage from '../images/community/kitea-ako.jpg';
 import studyBuddyImage from '../images/community/study-buddy.jpg';
 import zealandiaImage from '../images/community/zealandia.jpg';
 import heroImage from '../images/header-background.webp';
@@ -458,6 +459,7 @@ export const testimonial: TestimonialSection = {
       name: 'Kitea Impact Programme & Ako in Action',
       period: 'Victoria University of Wellington · 2026',
       text: 'Took part in two VUW community programmes, working alongside people from different backgrounds and learning the values that underpin community life in Aotearoa.',
+      image: (kiteaAkoImage as unknown as {src: string}).src,
     },
   ],
 };

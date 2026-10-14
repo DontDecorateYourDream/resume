@@ -10,6 +10,7 @@ import {
 
 import GithubIcon from '../components/Icon/GithubIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
+import zealandiaImage from '../images/community/zealandia.jpg';
 import heroImage from '../images/header-background.webp';
 import porfolioImage1 from '../images/portfolio/portfolio-1.jpg';
 import porfolioImage2 from '../images/portfolio/portfolio-2.jpg';
@@ -38,8 +39,9 @@ import {
  * Page meta data
  */
 export const homePageMeta: HomepageMeta = {
-  title: 'Alex Guo — IT Manager & Systems Architect',
-  description: 'Personal resume website for Alex Guo, IT Manager and MCS student at Victoria University of Wellington.',
+  title: 'Alex Guo — Software Implementation · Databases · IT & Security',
+  description:
+    'Resume of Alex Guo: Master of Computer Science student at Victoria University of Wellington with 12+ years in IT. Open to internships and graduate roles in Wellington.',
 };
 
 /**
@@ -53,7 +55,7 @@ export const SectionId = {
   Resume: 'resume',
   Skills: 'skills',
   Stats: 'stats',
-  Testimonials: 'testimonials',
+  Testimonials: 'community',
 } as const;
 
 export type SectionId = (typeof SectionId)[keyof typeof SectionId];
@@ -67,16 +69,15 @@ export const heroData: Hero = {
   description: (
     <>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        Wellington-based <strong className="text-stone-100">IT Manager &amp; Systems Architect</strong> with{' '}
-        <strong className="text-stone-100">12+ years</strong> of progressive experience and four internal promotions
-        at a US-headquartered multinational. Holder of{' '}
-        <strong className="text-stone-100">10+ industry certifications</strong> across project management, cloud
-        systems, cybersecurity, and networking.
+        Wellington-based <strong className="text-stone-100">IT professional</strong> focused on{' '}
+        <strong className="text-stone-100">software implementation, databases and security</strong>. 12+ years at a
+        US-headquartered multinational, promoted four times from Helpdesk Technician to IT Manager, with{' '}
+        <strong className="text-stone-100">10+ certifications</strong> including PMP and Security+.
       </p>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
         Currently completing a{' '}
         <strong className="text-stone-100">Master of Computer Science at Victoria University of Wellington</strong>,
-        deepening expertise in AI and data-driven systems. Open to part-time and volunteer opportunities.
+        graduating February 2027. Open to internships (full-time Dec 2026 – Feb 2027) and graduate roles.
       </p>
     </>
   ),
@@ -100,18 +101,17 @@ export const heroData: Hero = {
  */
 export const aboutData: About = {
   profileImageSrc: profilepic,
-  description: `Results-driven IT leader with 12+ years of progressive experience and four internal promotions
-  from Helpdesk Technician to IT Manager at a US-headquartered multinational manufacturer. Proven track record
-  in leading large-scale infrastructure projects, building cross-functional teams, and delivering process
-  automation with measurable ROI. Currently completing a Master of Computer Science at VUW Wellington,
-  deepening expertise in AI and data-driven systems.`,
+  description: `IT professional with 12+ years at a US-headquartered manufacturer, promoted four times from
+  Helpdesk Technician to IT Manager. I deliver software and infrastructure projects end to end, work closely with
+  users, and automate what slows them down. Now completing a Master of Computer Science at VUW, with a focus on
+  databases, big data, AI and security.`,
   aboutItems: [
     {label: 'Location', text: 'Wellington, New Zealand', Icon: MapIcon},
-    {label: 'Visa', text: 'Student Visa · 25h/wk (term) · Full-time holidays', Icon: CalendarIcon},
+    {label: 'Availability', text: 'Full-time Dec 2026 – Feb 2027 (student visa)', Icon: CalendarIcon},
     {label: 'Post-Study', text: 'Open Work Visa eligible Feb 2027', Icon: FlagIcon},
-    {label: 'Interests', text: 'AI, DevOps, Cybersecurity, Conservation', Icon: SparklesIcon},
+    {label: 'Interests', text: 'Databases, AI, DevOps, Security, Conservation', Icon: SparklesIcon},
     {label: 'Study', text: 'Victoria University of Wellington', Icon: AcademicCapIcon},
-    {label: 'Employment', text: 'Open to part-time & volunteer opportunities', Icon: BuildingOffice2Icon},
+    {label: 'Looking for', text: 'Internships & graduate roles in Wellington', Icon: BuildingOffice2Icon},
   ],
 };
 
@@ -120,43 +120,43 @@ export const aboutData: About = {
  */
 export const skills: SkillGroup[] = [
   {
-    name: 'Infrastructure & Virtualisation',
+    name: 'Databases',
     skills: [
-      {name: 'VMware vSphere', level: 9},
-      {name: 'Hyper-V', level: 9},
-      {name: 'Windows Server', level: 9},
-      {name: 'Linux (RHEL/CentOS)', level: 8},
-      {name: 'Data Centre Planning', level: 9},
+      {name: 'SQL (queries, views, window functions)', level: 8},
+      {name: 'SQL Server', level: 8},
+      {name: 'PostgreSQL', level: 8},
+      {name: 'MySQL', level: 8},
+      {name: 'Neo4j / NoSQL', level: 6},
     ],
   },
   {
-    name: 'Networking & Security',
+    name: 'Programming & Data',
     skills: [
-      {name: 'Cisco / HPE / FortiNet', level: 8},
-      {name: 'MPLS / VPN / Wireless', level: 8},
-      {name: 'ISO 9001/14000 Compliance', level: 8},
-      {name: 'CompTIA Security+', level: 7},
-      {name: 'CTF Competitions', level: 6},
-    ],
-  },
-  {
-    name: 'Programming & Scripting',
-    skills: [
-      {name: 'Python', level: 6},
       {name: 'VBA (Advanced)', level: 9},
+      {name: 'Python', level: 7},
+      {name: 'PySpark / Spark MLlib', level: 6},
       {name: 'JavaScript / PHP', level: 6},
-      {name: 'SQL', level: 7},
       {name: 'R', level: 5},
     ],
   },
   {
     name: 'Cloud & DevOps',
     skills: [
+      {name: 'Linux / Nginx / SSL', level: 7},
       {name: 'Docker / Podman', level: 6},
-      {name: 'Git / GitHub Actions', level: 6},
-      {name: 'Hadoop / Spark (PySpark)', level: 5},
-      {name: 'Nginx / MySQL / SSL', level: 7},
+      {name: 'Git / GitLab / GitHub Actions', level: 6},
       {name: 'CI/CD Pipelines', level: 6},
+      {name: 'Hadoop / HDFS', level: 5},
+    ],
+  },
+  {
+    name: 'Infrastructure & Security',
+    skills: [
+      {name: 'VMware vSphere / Hyper-V', level: 9},
+      {name: 'Windows Server / RHEL', level: 8},
+      {name: 'Cisco / HPE / FortiNet', level: 8},
+      {name: 'ISO 9001/14000 Compliance', level: 8},
+      {name: 'CompTIA Security+', level: 7},
     ],
   },
 ];
@@ -288,12 +288,7 @@ export const testimonial: TestimonialSection = {
     {
       name: 'Zealandia Conservation Volunteer',
       text: 'Contributing to conservation operations at one of the world\'s first fully fenced urban ecosanctuaries — supporting habitat restoration and wildlife protection for Wellington\'s native species including kiwi, tuatara, and kākā. (Apr 2026 – Present)',
-      image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=200&h=200&fit=crop',
-    },
-    {
-      name: 'VUW Hackathon — Team 2nd Place',
-      text: 'Competed alongside a cross-disciplinary team over 3 days (Apr 1–3, 2026). Collaborated closely under intense time pressure to design and implement an end-to-end technical solution, securing 2nd place in the group stage.',
-      image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=200&h=200&fit=crop',
+      image: (zealandiaImage as unknown as {src: string}).src,
     },
     {
       name: 'VuwCTF Cybersecurity Competition',
@@ -308,7 +303,7 @@ export const testimonial: TestimonialSection = {
  */
 export const contact: ContactSection = {
   headerText: 'Get in touch.',
-  description: 'I\'m currently open to part-time roles and volunteer research opportunities in Wellington. Feel free to reach out by email or connect on LinkedIn.',
+  description: 'I\'m open to internships (full-time Dec 2026 – Feb 2027) and graduate roles in IT implementation, data and security in Wellington. Feel free to reach out by email or connect on LinkedIn.',
   items: [
     {
       type: ContactType.Email,

@@ -1,5 +1,9 @@
 import {StaticImageData} from 'next/image';
 
+import bleArchitectureImage from '../images/projects/ble-architecture.jpg';
+import bleFinalDiscoveryImage from '../images/projects/ble-final-discovery.jpg';
+import bleMultihopImage from '../images/projects/ble-multihop.jpg';
+import bleOptimisationImage from '../images/projects/ble-optimisation.jpg';
 import gan3ClassImage from '../images/projects/gan-3-class.jpg';
 import gan7ClassImage from '../images/projects/gan-7-class.jpg';
 import ganEpochImage from '../images/projects/gan-epoch-progression.jpg';
@@ -63,6 +67,189 @@ export const projectDetails: Record<string, ProjectDetail> = {
       },
     ],
     stack: ['PySpark', 'Spark MLlib', 'Hadoop YARN', 'HDFS', 'Kerberos', 'Python'],
+  },
+
+  'ble-sensor-network': {
+    summary:
+      'A Bluetooth Low Energy sensor network running on real boards in the FIT IoT-LAB testbed: the gateway finds the right sensor, reads it and answers in about a tenth of a second.',
+    facts: [
+      {label: 'Course', value: 'SWEN428 Internet of Things · Project 2'},
+      {label: 'Type', value: 'Individual project'},
+      {label: 'When', value: 'Trimester 2, 2026'},
+      {label: 'Hardware', value: 'Nordic nRF52DK boards with an HTS221 temperature and humidity sensor'},
+    ],
+    metrics: [
+      {value: '100/100', label: 'discoveries under 100 ms'},
+      {value: '31 ms', label: 'median discovery time'},
+      {value: '193 → 99 ms', label: 'response time after tuning'},
+      {value: '56 ms', label: 'median extra delay via relay'},
+    ],
+    sections: [
+      {
+        heading: 'The challenge',
+        paragraphs: [
+          'Build a BLE network of three or more sensors and a gateway. An application asks for temperature or humidity; the gateway has to find a suitable sensor, connect, read the value and return it, or return an error if no sensor is available.',
+        ],
+      },
+      {
+        heading: 'What I built',
+        points: [
+          'Firmware in C for RIOT OS with the NimBLE stack, with gateway, sensor and relay roles sharing a small application protocol.',
+          'A custom environment service whose UUID is in the advertisement, so the gateway can choose a sensor without connecting first, and a single Read By Type request instead of full service discovery.',
+          'Answers as JSON with a Unix timestamp, value and unit. The gateway replies to the application before it closes the link.',
+          'A built-in bench command that times every phase of a request on the gateway, used for four groups of experiments on advertising, scanning and connection parameters.',
+          'A relay that keeps a connection to a sensor the gateway is set to ignore and serves cached readings with an age limit. Range limits were emulated in software, because every board stayed in range even at the lowest transmit power.',
+        ],
+      },
+      {
+        heading: 'Results',
+        points: [
+          'With a 50 ms advertising interval, all 100 discoveries finished in under 100 ms (median 31 ms).',
+          'Connection set-up takes about one advertising interval, and a low scan duty cycle makes discovery latency rise in steps.',
+          'Replying before closing the link, with a 10 ms connection interval, cut the response time from 193 ms to 99 ms.',
+          'The relay adds little delay (56 ms median). Its readings can be up to 0.6 s old, which is fine for slowly changing temperature and humidity.',
+        ],
+      },
+    ],
+    stack: ['C', 'RIOT OS', 'NimBLE', 'BLE GATT', 'nRF52DK', 'FIT IoT-LAB', 'Python (analysis)'],
+    gallery: [
+      {
+        image: bleArchitectureImage,
+        caption: 'Architecture: application, gateway, two direct sensors and a relay for the out-of-range sensor.',
+      },
+      {
+        image: bleFinalDiscoveryImage,
+        caption: 'Final discovery latency over 100 runs with a 50 ms advertising interval.',
+      },
+      {
+        image: bleOptimisationImage,
+        caption:
+          'Breakdown of a full query: replying first with a 10 ms connection interval cuts the reply from 193 ms to 99 ms.',
+      },
+      {
+        image: bleMultihopImage,
+        caption: 'Response time for a direct sensor vs a sensor behind the relay, across relay settings.',
+      },
+    ],
+  },
+
+  'neo4j-graph-analytics': {
+    summary:
+      'Graph queries and algorithms in Neo4j, plus a root-cause investigation into an anomaly that is easy to miss. Graded 99/100.',
+    facts: [
+      {label: 'Course', value: 'SWEN432 Advanced Database Design & Implementation'},
+      {label: 'Type', value: 'Individual assignment'},
+      {label: 'When', value: 'Trimester 2, 2026'},
+      {label: 'Result', value: '99/100'},
+    ],
+    metrics: [
+      {value: '6,583', label: 'nodes in the hero network'},
+      {value: '62', label: 'anomalous scores explained'},
+      {value: '101+', label: 'duplicate record groups found'},
+      {value: '4', label: 'independent cross-checks'},
+    ],
+    sections: [
+      {
+        heading: 'The work',
+        paragraphs: [
+          'Cypher queries on two graphs: an e-commerce database of users, orders, products, reviews and wishlists, and a Marvel network of 6,583 heroes. I used Neo4j Graph Data Science for Louvain and label-propagation communities and for betweenness, degree and closeness centrality.',
+        ],
+      },
+      {
+        heading: 'The anomaly',
+        paragraphs: [
+          'One question asked for the hero with the largest gap between closeness and degree centrality. The top results all had a closeness of exactly 1.0, the theoretical maximum, so I investigated before answering.',
+        ],
+        points: [
+          'Min–max normalised both measures so they could be compared at all.',
+          'Counted 62 heroes with closeness 1.0. Weakly connected components showed the graph is 161 separate islands, but 53 of the 62 sat in the main 6,408-node component, so isolation alone did not explain it.',
+          'Tested and refined hypotheses about edge direction and in-degree until the real driver emerged: anomalous heroes can be reached from at most 9 other heroes, against an average of more than 1,500, matching how GDS computes closeness on sparse graphs.',
+          'Confirmed the pattern at both 3- and 4-hop cut-offs, cross-checked it with four independent methods, and re-imported the data to check results were reproducible.',
+        ],
+      },
+      {
+        heading: 'A second finding: duplicate records',
+        paragraphs: [
+          'While checking why 372 heroes had a degree of 0, I noticed famous characters in the list. The dataset holds duplicates: a truncated “SPIDER-MAN/PETER PAR” carries all of Spider-Man’s relationships, while “SPIDER-MAN/PETER PARKER” is an isolated copy. A systematic query found at least 101 duplicate groups.',
+        ],
+      },
+      {
+        heading: 'Why it matters',
+        paragraphs: [
+          'Data-quality problems hide behind plausible numbers. Checking the result instead of trusting the first query is what makes analytics trustworthy.',
+        ],
+      },
+    ],
+    stack: ['Neo4j', 'Cypher', 'Graph Data Science', 'Louvain / LPA', 'Centrality', 'Connected components'],
+  },
+
+  'incident-investigation-ach': {
+    summary:
+      'An intrusion investigation on a partner file-transfer server: weighing 21 evidence records with Analysis of Competing Hypotheses, then turning the result into a 200-word decision brief.',
+    facts: [
+      {label: 'Course', value: 'CYBR471 Cybersecurity Attack & Defence'},
+      {label: 'Type', value: 'Individual assignment'},
+      {label: 'When', value: 'Trimester 2, 2026'},
+    ],
+    metrics: [
+      {value: '21', label: 'evidence records assessed'},
+      {value: '3', label: 'competing access hypotheses'},
+      {value: '200 words', label: 'decision brief for leaders'},
+    ],
+    sections: [
+      {
+        heading: 'The scenario',
+        paragraphs: [
+          'A server that sends research data to partners shows signs of compromise: a tampered software updater, a PowerShell download request to an unknown domain, an archive of partner data and outbound HTTPS traffic. Evidence came from EDR, Sysmon, firewall, WAF, supplier and threat-intelligence records.',
+        ],
+      },
+      {
+        heading: 'What I did',
+        points: [
+          'Interpreted key records with alternative explanations and source limits, for example separating what a Sysmon process event proves (a command was requested) from what it does not (that the command ran).',
+          'Used ACH to compare three access routes: a compromised supplier package, local tampering through an exposed WinRM rule, and the public web portal.',
+          'Judged local updater tampering through exposed WinRM as likely, with moderate confidence, and explained why the other two routes were weakened.',
+          'Assessed a threat-intelligence attribution claim on its evidence rather than adopting the publisher’s stated confidence.',
+          'Planned further evidence collection and what each plausible result would change.',
+        ],
+      },
+      {
+        heading: 'Decision brief',
+        paragraphs: [
+          'Recommended delaying the next partner transfer, isolating the server, preserving memory and logs, disabling the exposed WinRM rule, resetting the affected admin account and blocking the suspicious domain, and involving partners in the notification decision without overstating what was disclosed.',
+        ],
+      },
+    ],
+    stack: ['Incident response', 'ACH', 'Sysmon / EDR telemetry', 'Firewall & WAF logs', 'Threat intelligence'],
+  },
+
+  'recon-osint-boot2root': {
+    summary:
+      'Authorised reconnaissance, a passive OSINT assessment, bounded Nmap enumeration and hands-on Boot2Root exploitation, each written up with its evidence and its limits.',
+    facts: [
+      {label: 'Course', value: 'CYBR471 Cybersecurity Attack & Defence'},
+      {label: 'Type', value: 'Individual assignment'},
+      {label: 'When', value: 'Trimester 2, 2026'},
+    ],
+    sections: [
+      {
+        heading: 'What I did',
+        points: [
+          'Reconnaissance on a deliberately vulnerable demo banking application: resolved its address from two independent devices, traced network registration through ARIN WHOIS, identified authoritative DNS and added passive Shodan observations.',
+          'Separated facts from inferences, for example explaining an odd 5-second DNS TTL as a local virtualised DNS relay rather than the authoritative server.',
+          'A passive OSINT report on two New Zealand security firms covering external presence, visible technology, public documents and metadata, prioritised by security relevance and with notes on source reliability and ethics.',
+          'A bounded Nmap service scan of scanme.nmap.org with a reproducible command, interpreting open services, version evidence and filtering limits.',
+          'Boot2Root challenges in the course lab, working from foothold to root.',
+        ],
+      },
+      {
+        heading: 'Approach',
+        paragraphs: [
+          'Stay in scope and on authorised targets, record reproducible commands, and be clear about what the evidence does and does not support.',
+        ],
+      },
+    ],
+    stack: ['Kali Linux', 'dig / WHOIS', 'Shodan', 'OSINT', 'Nmap', 'Exploitation'],
   },
 
   'sales-data-mart': {

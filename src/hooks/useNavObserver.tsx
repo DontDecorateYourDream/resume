@@ -43,7 +43,7 @@ export const useNavObserver = (selectors: string, handler: (section: SectionId |
       },
       {
         root: null,
-        threshold: 0.1,
+        threshold: 0,
         rootMargin: '0px 0px -70% 0px',
       },
     );

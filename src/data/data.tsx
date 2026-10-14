@@ -14,6 +14,7 @@ import kiteaAkoImage from '../images/community/kitea-ako.jpg';
 import studyBuddyImage from '../images/community/study-buddy.jpg';
 import zealandiaImage from '../images/community/zealandia.jpg';
 import heroImage from '../images/header-background.webp';
+import ansibleWordpressImage from '../images/portfolio/ansible-wordpress.jpg';
 import beijingHousingImage from '../images/portfolio/beijing-housing.jpg';
 import bleSensorNetworkImage from '../images/portfolio/ble-sensor-network.jpg';
 import branchNetworkImage from '../images/portfolio/branch-network.jpg';
@@ -262,13 +263,23 @@ export const portfolioItems: PortfolioItem[] = [
     image: iotWaterImage,
   },
   {
-    title: 'Containerised WordPress Stack',
+    title: 'WordPress Server as Code (Ansible)',
+    slug: 'ansible-wordpress-provisioning',
+    category: 'university',
+    context: 'SWEN426 DevOps · Assignment 1',
+    description:
+      'A Vagrant VM provisioned end to end by five Ansible roles, with ansible-lint, yamllint and gitlint enforced in GitLab CI.',
+    tags: ['Ansible', 'Vagrant', 'GitLab CI'],
+    image: ansibleWordpressImage,
+  },
+  {
+    title: 'Containerised WordPress & CI Image',
     slug: 'containerised-wordpress-stack',
     category: 'university',
-    context: 'SWEN426 DevOps',
+    context: 'SWEN426 DevOps · Assignment 2',
     description:
-      'Built a custom CI container image and containerised WordPress with nginx and MySQL using Podman Compose, with persistent storage and a GitLab issue → merge-request workflow.',
-    tags: ['Podman', 'Containers', 'GitLab', 'nginx'],
+      'nginx, WordPress (PHP-FPM) and MySQL with Podman Compose on an internal network with secrets, plus a CI image the pipeline builds and publishes itself.',
+    tags: ['Podman', 'Compose', 'GitLab CI'],
     image: devopsContainersImage,
   },
   {

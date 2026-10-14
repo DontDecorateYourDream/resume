@@ -1,5 +1,7 @@
 import {StaticImageData} from 'next/image';
 
+import ansibleQualityGatesImage from '../images/projects/ansible-quality-gates.jpg';
+import ansibleRolesImage from '../images/projects/ansible-roles.jpg';
 import bjPipelineImage from '../images/projects/bj-pipeline.jpg';
 import bjRingRoadsImage from '../images/projects/bj-ring-roads.jpg';
 import bjScalingImage from '../images/projects/bj-scaling.jpg';
@@ -11,8 +13,9 @@ import conferenceMeetingImage from '../images/projects/conference-meeting.jpg';
 import datacentreRacksImage from '../images/projects/datacentre-racks.jpg';
 import datamartRollupImage from '../images/projects/datamart-rollup.jpg';
 import datamartStarSchemaImage from '../images/projects/datamart-star-schema.jpg';
-import devopsDiagramImage from '../images/projects/devops-diagram.jpg';
-import devopsPortImage from '../images/projects/devops-port.jpg';
+import devopsCiImage from '../images/projects/devops-ci.jpg';
+import devopsComposeImage from '../images/projects/devops-compose.jpg';
+import devopsWordpressSiteImage from '../images/projects/devops-wordpress-site.jpg';
 import docengineFlowImage from '../images/projects/docengine-flow.jpg';
 import docengineSpreadsheetImage from '../images/projects/docengine-spreadsheet.jpg';
 import gan7ClassImage from '../images/projects/gan-7-class.jpg';
@@ -447,41 +450,103 @@ export const projectDetails: Record<string, ProjectDetail> = {
     ],
   },
 
-  'containerised-wordpress-stack': {
+  'ansible-wordpress-provisioning': {
     summary:
-      'A best-practice container setup for WordPress, plus a custom image for the CI pipeline, built with Podman and a GitLab merge-request workflow.',
+      'A WordPress server built entirely from code: a Vagrant VM configured by Ansible roles, with linting and CI checks on every merge request.',
     facts: [
-      {label: 'Course', value: 'SWEN426 DevOps'},
+      {label: 'Course', value: 'SWEN426 DevOps · Assignment 1'},
       {label: 'Type', value: 'Individual assignment'},
       {label: 'When', value: 'Trimester 1, 2026'},
     ],
+    metrics: [
+      {value: '5', label: 'Ansible roles'},
+      {value: '6', label: 'merge requests'},
+      {value: '26', label: 'CI pipeline runs'},
+    ],
     sections: [
       {
-        heading: 'The challenge',
+        heading: 'The goal',
         paragraphs: [
-          'Build a container image for use in a CI pipeline, then containerise a WordPress site following best-practice recommendations as far as practicable.',
+          'Build a WordPress server that can be recreated from version control at any time, instead of configuring one by hand, and keep the code quality checked automatically.',
         ],
       },
       {
         heading: 'What I did',
         points: [
-          'Built and ran a custom container image with everything the CI pipeline needs.',
-          'Composed WordPress (PHP-FPM), MySQL and nginx with Podman Compose, each service in its own container.',
-          'Kept the WordPress database on a persistent volume so content survives rebuilds.',
-          'Worked the way a real team does: an issue and merge request for each part, regular commits, and squash-and-merge into a protected main branch.',
+          'Defined an Ubuntu 22.04 VM with Vagrant and VirtualBox on a private network.',
+          'Wrote an Ansible playbook, then refactored it into five roles (common, php, mysql, nginx and wordpress), with the WordPress role declaring the others as dependencies.',
+          'Templated the nginx site, MySQL configuration and wp-config.php; created the database and user; and restored a database backup with the Twenty Twenty-Two theme.',
+          'Enforced quality gates with pre-commit (ansible-lint, yamllint, gitlint and whitespace fixers), run locally and in a GitLab CI job with a cached pre-commit environment.',
+          'Worked the way a team does: an issue and branch for each part, conventional commit messages, and merge requests squash-merged into main.',
+        ],
+      },
+      {
+        heading: 'Result',
+        paragraphs: [
+          'Six merge requests merged. The pipeline went from early failures to passing on every merge to main, so each change to the server is linted and reviewable.',
         ],
       },
     ],
-    stack: ['Podman', 'Podman Compose', 'nginx', 'WordPress / PHP-FPM', 'MySQL', 'GitLab', 'Linux'],
+    stack: ['Ansible', 'Vagrant', 'VirtualBox', 'Ubuntu', 'nginx', 'PHP', 'MySQL', 'GitLab CI', 'pre-commit'],
     gallery: [
+      {image: ansibleRolesImage, caption: 'Playbook and role structure, from the repository.'},
       {
-        image: devopsDiagramImage,
-        caption: 'Service layout: nginx in front of WordPress (PHP-FPM) and MySQL on a persistent volume.',
+        image: ansibleQualityGatesImage,
+        caption: 'Quality gates: the pre-commit hooks and the GitLab CI job that runs them.',
       },
-      {image: devopsPortImage, caption: 'Containers at scale (illustrative photo).'},
     ],
   },
 
+  'containerised-wordpress-stack': {
+    summary:
+      'WordPress containerised the way you would run it in production, plus a CI image that the pipeline builds and publishes for itself.',
+    facts: [
+      {label: 'Course', value: 'SWEN426 DevOps · Assignment 2'},
+      {label: 'Type', value: 'Individual assignment'},
+      {label: 'When', value: 'Trimester 1, 2026'},
+    ],
+    metrics: [
+      {value: '3', label: 'containers: nginx, WordPress, MySQL'},
+      {value: '7', label: 'merge requests'},
+      {value: '~10 s', label: 'pre-commit CI job on main'},
+    ],
+    sections: [
+      {
+        heading: 'The challenge',
+        paragraphs: [
+          'Build a container image for the CI pipeline, then containerise a WordPress site following best-practice recommendations as far as practicable.',
+        ],
+      },
+      {
+        heading: 'What I did',
+        points: [
+          'Wrote a Containerfile for the CI image (Ubuntu, Python, git and pre-commit) and a Podman job that builds it and pushes it to the GitLab container registry, running only when the Containerfile changes.',
+          'Switched the pre-commit job to that image so CI no longer installs tools on every run. On main the job takes about 10 seconds.',
+          'Containerised WordPress with Podman Compose: nginx in front, WordPress on PHP-FPM, and MySQL 8.4 behind it.',
+          'Kept MySQL on an internal-only network, passed the root password as a secret, stored data on named volumes, and mounted the nginx config and site files read-only.',
+          'Pinned every image version and worked issue → branch → merge request, squash-merging into a protected main branch.',
+        ],
+      },
+      {
+        heading: 'Result',
+        paragraphs: [
+          'The whole site comes up with one command. I re-ran it from the repository for this page: the screenshot below is the restored blog served by the three containers.',
+        ],
+      },
+    ],
+    stack: ['Podman', 'Podman Compose', 'GitLab CI', 'Container registry', 'nginx', 'WordPress / PHP-FPM', 'MySQL 8.4'],
+    gallery: [
+      {
+        image: devopsWordpressSiteImage,
+        caption: 'The WordPress site restored from my database backup and served by the three containers.',
+      },
+      {
+        image: devopsComposeImage,
+        caption: 'compose.yml: internal backend network, secrets, read-only mounts and pinned images.',
+      },
+      {image: devopsCiImage, caption: 'The pipeline builds and publishes its own CI image, then uses it for linting.'},
+    ],
+  },
   'vuw-hackathon-glasshouse': {
     summary:
       '“glasshouse”, a transparent fundraising tracker built in three days, which won second place at the VUW Hackathon 2026.',

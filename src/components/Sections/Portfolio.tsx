@@ -130,10 +130,11 @@ const ProjectTile: FC<{item: PortfolioItem; index: number; size: TileSize}> = me
   return (
     <div
       className={classNames(
-        'transition duration-700 ease-out motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none',
+        'scroll-mt-24 transition duration-700 ease-out motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none',
         tileSpan[size],
         visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0',
       )}
+      id={slug}
       ref={ref}
       style={{transitionDelay: `${(index % 4) * 90}ms`}}>
       <Link

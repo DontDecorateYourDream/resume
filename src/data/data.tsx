@@ -444,6 +444,13 @@ export const testimonial: TestimonialSection = {
       link: {label: 'See the CTFtime scoreboard', href: 'https://ctftime.org/event/3311'},
     },
     {
+      name: 'VUW Hackathon 2026 — 2nd place',
+      period: '1–3 April 2026 · team project',
+      text: 'Built “glasshouse”, a transparent fundraising tracker, with a cross-disciplinary team in three days and took second place.',
+      image: (hackathonImage as unknown as {src: string}).src,
+      link: {label: 'See the project', href: '/projects/vuw-hackathon-glasshouse'},
+    },
+    {
       name: 'Study Buddy Programme',
       period: 'Victoria University of Wellington · 2026',
       text: 'Joined a study buddy programme for students from many different countries, helping each other settle into university life in Wellington.',

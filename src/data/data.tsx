@@ -172,6 +172,7 @@ export const skills: SkillGroup[] = [
 export const portfolioItems: PortfolioItem[] = [
   {
     title: 'Beijing Housing Price Prediction',
+    slug: 'beijing-housing-price-prediction',
     category: 'university',
     context: 'AIML427 Big Data · Individual project',
     description:
@@ -181,6 +182,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     title: 'Sales Data Mart & OLAP',
+    slug: 'sales-data-mart',
     category: 'university',
     context: 'SWEN432 Advanced Database Design',
     description:
@@ -190,6 +192,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     title: 'Conditional DCGAN',
+    slug: 'conditional-dcgan',
     category: 'university',
     context: 'AIML431 Current Topics in AI',
     description:
@@ -199,6 +202,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     title: 'Smart Water IoT Architecture',
+    slug: 'smart-water-iot-architecture',
     category: 'university',
     context: 'SWEN428 Internet of Things',
     description:
@@ -208,6 +212,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     title: 'Containerised WordPress Stack',
+    slug: 'containerised-wordpress-stack',
     category: 'university',
     context: 'SWEN426 DevOps',
     description:
@@ -217,25 +222,27 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     title: 'VUW Hackathon — 2nd Place',
+    slug: 'vuw-hackathon-glasshouse',
     category: 'university',
     context: 'Team project · Apr 2026',
     description:
       'Three-day team build of “glasshouse”, a full-stack web app with a Python/Supabase backend and a React + TypeScript frontend. Awarded second place.',
     tags: ['Teamwork', 'React', 'Python'],
-    url: 'https://github.com/joshuapinpin/glasshouse',
     image: hackathonImage,
   },
   {
     title: 'Ignite Consulting Project',
+    slug: 'ignite-consulting-project',
     category: 'university',
-    context: 'Student consulting · supported by Deloitte',
+    context: 'Ignite Consultants · Combustion 2026',
     description:
-      'Part of a student consulting team that researched and presented “Bridging the Gap” — a proposal for making student talent accessible to small organisations.',
+      'One-day consulting challenge for client Summer of Tech. Our team researched and pitched “Bridging the Gap”, a proposal for making student talent accessible to small organisations.',
     tags: ['Consulting', 'Research', 'Presentation'],
     image: igniteImage,
   },
   {
     title: 'Data Centre Renovation & UPS',
+    slug: 'data-centre-renovation',
     category: 'industry',
     context: 'Flexfab · Nov 2024 – Jan 2025',
     description:
@@ -245,6 +252,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     title: 'Cybersecurity Awareness Programme',
+    slug: 'cybersecurity-awareness-programme',
     category: 'industry',
     context: 'Flexfab · Aug 2024',
     description:
@@ -254,6 +262,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     title: 'Conference System Integration',
+    slug: 'conference-system-integration',
     category: 'industry',
     context: 'Flexfab · May 2023',
     description:
@@ -263,6 +272,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     title: 'New Branch Infrastructure',
+    slug: 'new-branch-infrastructure',
     category: 'industry',
     context: 'Flexfab · Jul 2021',
     description:
@@ -272,6 +282,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     title: 'Multi-Site Wireless Coverage',
+    slug: 'multi-site-wireless-coverage',
     category: 'industry',
     context: 'Flexfab · Jun 2019',
     description:
@@ -281,6 +292,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     title: 'Document Automation Engine',
+    slug: 'document-automation-engine',
     category: 'industry',
     context: 'Flexfab · Sep 2018',
     description:

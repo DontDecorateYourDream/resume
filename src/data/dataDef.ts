@@ -78,11 +78,11 @@ export interface SkillGroup {
  */
 export interface PortfolioItem {
   title: string;
+  slug: string; // project page lives at /projects/[slug]
   description: string;
   category: 'university' | 'industry';
   context?: string;
   tags?: string[];
-  url?: string;
   image: string | StaticImageData;
 }
 

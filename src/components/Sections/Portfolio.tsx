@@ -1,6 +1,7 @@
-import {ArrowTopRightOnSquareIcon} from '@heroicons/react/24/outline';
+import {ArrowRightIcon} from '@heroicons/react/24/outline';
 import classNames from 'classnames';
 import Image from 'next/image';
+import Link from 'next/link';
 import {FC, memo, useEffect, useMemo, useRef, useState} from 'react';
 
 import {portfolioItems, SectionId} from '../../data/data';
@@ -74,7 +75,7 @@ export default Portfolio;
 
 // Fades each card up as it scrolls into view, staggered across the row.
 const ProjectCard: FC<{item: PortfolioItem; index: number}> = memo(({item, index}) => {
-  const {title, description, context, tags, url, image} = item;
+  const {title, slug, description, context, tags, image} = item;
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -109,14 +110,11 @@ const ProjectCard: FC<{item: PortfolioItem; index: number}> = memo(({item, index
         />
       </div>
       <div className="flex flex-1 flex-col gap-y-2 p-4">
-        <div className="flex items-start justify-between gap-x-2">
-          <h3 className="font-bold text-white">{title}</h3>
-          {url && <ArrowTopRightOnSquareIcon className="mt-1 h-4 w-4 shrink-0 text-orange-400" />}
-        </div>
+        <h3 className="font-bold text-white">{title}</h3>
         {context && <p className="text-xs font-medium text-orange-400">{context}</p>}
         <p className="text-sm text-neutral-300">{description}</p>
         {tags && (
-          <ul className="mt-auto flex flex-wrap gap-2 pt-2">
+          <ul className="flex flex-wrap gap-2 pt-2">
             {tags.map(tag => (
               <li className="rounded-full border border-orange-500/40 px-2 py-0.5 text-xs text-orange-300" key={tag}>
                 {tag}
@@ -124,6 +122,10 @@ const ProjectCard: FC<{item: PortfolioItem; index: number}> = memo(({item, index
             ))}
           </ul>
         )}
+        <span className="mt-auto flex items-center gap-x-1 pt-3 text-sm font-semibold text-orange-400 transition-colors group-hover:text-orange-300">
+          View project
+          <ArrowRightIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+        </span>
       </div>
     </div>
   );
@@ -136,13 +138,9 @@ const ProjectCard: FC<{item: PortfolioItem; index: number}> = memo(({item, index
       )}
       ref={ref}
       style={{transitionDelay: `${(index % 3) * 120}ms`}}>
-      {url ? (
-        <a className="block h-full" href={url} rel="noopener noreferrer" target="_blank">
-          {card}
-        </a>
-      ) : (
-        card
-      )}
+      <Link aria-label={`View project: ${title}`} className="block h-full" href={`/projects/${slug}`}>
+        {card}
+      </Link>
     </div>
   );
 });

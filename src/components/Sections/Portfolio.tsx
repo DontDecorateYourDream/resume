@@ -10,6 +10,34 @@ import testimonialImage from '../../images/testimonial.webp';
 import Section from '../Layout/Section';
 
 type Filter = 'all' | PortfolioItem['category'];
+type TileSize = 'big' | 'wide' | 'small';
+
+/**
+ * Bento layout: a few 2×2 feature tiles and 2×1 wide tiles among 1×1 tiles.
+ * Chooses how many of each so the cells fill whole rows of the 4-column grid.
+ */
+const bentoLayout = (count: number): TileSize[] => {
+  const sizes: TileSize[] = Array(count).fill('small');
+  if (count < 3) return sizes;
+  const bigs = Math.max(1, Math.round(count / 6));
+  const wides = (4 - ((count + 3 * bigs) % 4)) % 4;
+  for (let i = 0; i < bigs; i++) {
+    sizes[Math.floor((i * count) / bigs)] = 'big';
+  }
+  for (let i = count - 1, placed = 0; i >= 0 && placed < wides; i -= 2) {
+    if (sizes[i] === 'small') {
+      sizes[i] = 'wide';
+      placed++;
+    }
+  }
+  return sizes;
+};
+
+const tileSpan: Record<TileSize, string> = {
+  big: 'sm:col-span-2 sm:row-span-2',
+  wide: 'sm:col-span-2',
+  small: '',
+};
 
 const filters: {id: Filter; label: string}[] = [
   {id: 'all', label: 'All'},
@@ -24,6 +52,7 @@ const Portfolio: FC = memo(() => {
     () => (filter === 'all' ? portfolioItems : portfolioItems.filter(item => item.category === filter)),
     [filter],
   );
+  const layout = useMemo(() => bentoLayout(visibleItems.length), [visibleItems.length]);
 
   useEffect(() => {
     const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -60,9 +89,9 @@ const Portfolio: FC = memo(() => {
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid auto-rows-[200px] grid-flow-dense grid-cols-1 gap-4 sm:grid-cols-2 lg:auto-rows-[210px] lg:grid-cols-4">
           {visibleItems.map((item, index) => (
-            <ProjectCard index={index} item={item} key={item.title} />
+            <ProjectTile index={index} item={item} key={item.title} size={layout[index]} />
           ))}
         </div>
       </div>
@@ -73,9 +102,9 @@ const Portfolio: FC = memo(() => {
 Portfolio.displayName = 'Portfolio';
 export default Portfolio;
 
-// Fades each card up as it scrolls into view, staggered across the row.
-const ProjectCard: FC<{item: PortfolioItem; index: number}> = memo(({item, index}) => {
-  const {title, slug, description, context, tags, image} = item;
+// Image-led tile: title and context sit on the photo; details live on the project page.
+const ProjectTile: FC<{item: PortfolioItem; index: number; size: TileSize}> = memo(({item, index, size}) => {
+  const {title, slug, context, image} = item;
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -98,51 +127,49 @@ const ProjectCard: FC<{item: PortfolioItem; index: number}> = memo(({item, index
     return () => observer.disconnect();
   }, []);
 
-  const card = (
-    <div className="flex h-full flex-col overflow-hidden rounded-lg bg-neutral-800/90 shadow-lg shadow-black/30 ring-1 ring-white/10 transition duration-300 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:ring-orange-500/60">
-      <div className="relative aspect-[3/2] overflow-hidden">
-        <Image
-          alt={title}
-          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-          placeholder={typeof image === 'string' ? 'empty' : 'blur'}
-          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          src={image}
-        />
-      </div>
-      <div className="flex flex-1 flex-col gap-y-2 p-4">
-        <h3 className="font-bold text-white">{title}</h3>
-        {context && <p className="text-xs font-medium text-orange-400">{context}</p>}
-        <p className="text-sm text-neutral-300">{description}</p>
-        {tags && (
-          <ul className="flex flex-wrap gap-2 pt-2">
-            {tags.map(tag => (
-              <li className="rounded-full border border-orange-500/40 px-2 py-0.5 text-xs text-orange-300" key={tag}>
-                {tag}
-              </li>
-            ))}
-          </ul>
-        )}
-        <span className="mt-auto flex items-center gap-x-1 pt-3 text-sm font-semibold text-orange-400 transition-colors group-hover:text-orange-300">
-          View project
-          <ArrowRightIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-        </span>
-      </div>
-    </div>
-  );
-
   return (
     <div
       className={classNames(
-        'group h-full transition duration-700 ease-out motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none',
+        'transition duration-700 ease-out motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none',
+        tileSpan[size],
         visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0',
       )}
       ref={ref}
-      style={{transitionDelay: `${(index % 3) * 120}ms`}}>
-      <Link aria-label={`View project: ${title}`} className="block h-full" href={`/projects/${slug}`}>
-        {card}
+      style={{transitionDelay: `${(index % 4) * 90}ms`}}>
+      <Link
+        aria-label={`View project: ${title}`}
+        className="group relative block h-full overflow-hidden rounded-xl shadow-lg shadow-black/40 ring-1 ring-white/10 transition duration-300 hover:ring-2 hover:ring-orange-500/80"
+        href={`/projects/${slug}`}>
+        <Image
+          alt={title}
+          className="object-cover transition duration-700 ease-out group-hover:scale-110"
+          fill
+          placeholder={typeof image === 'string' ? 'empty' : 'blur'}
+          sizes={
+            size === 'small'
+              ? '(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw'
+              : '(min-width: 640px) 50vw, 100vw'
+          }
+          src={image}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+          {context && <p className="text-[11px] font-semibold uppercase tracking-wider text-orange-400">{context}</p>}
+          <h3
+            className={classNames(
+              'mt-1 font-bold leading-snug text-white',
+              size === 'big' ? 'text-xl sm:text-2xl' : 'text-base',
+            )}>
+            {title}
+          </h3>
+          <span className="mt-1 flex max-h-0 items-center gap-x-1 overflow-hidden text-sm font-semibold text-orange-300 opacity-0 transition-all duration-300 group-hover:max-h-6 group-hover:opacity-100 touch:max-h-6 touch:opacity-100">
+            View project
+            <ArrowRightIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </span>
+        </div>
       </Link>
     </div>
   );
 });
 
-ProjectCard.displayName = 'ProjectCard';
+ProjectTile.displayName = 'ProjectTile';

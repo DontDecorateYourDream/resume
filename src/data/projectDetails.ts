@@ -1,14 +1,37 @@
 import {StaticImageData} from 'next/image';
 
+import bjPipelineImage from '../images/projects/bj-pipeline.jpg';
+import bjRingRoadsImage from '../images/projects/bj-ring-roads.jpg';
+import bjScalingImage from '../images/projects/bj-scaling.jpg';
 import bleArchitectureImage from '../images/projects/ble-architecture.jpg';
 import bleFinalDiscoveryImage from '../images/projects/ble-final-discovery.jpg';
-import bleMultihopImage from '../images/projects/ble-multihop.jpg';
 import bleOptimisationImage from '../images/projects/ble-optimisation.jpg';
-import gan3ClassImage from '../images/projects/gan-3-class.jpg';
+import branchCablingImage from '../images/projects/branch-cabling.jpg';
+import conferenceMeetingImage from '../images/projects/conference-meeting.jpg';
+import datacentreRacksImage from '../images/projects/datacentre-racks.jpg';
+import datamartRollupImage from '../images/projects/datamart-rollup.jpg';
+import datamartStarSchemaImage from '../images/projects/datamart-star-schema.jpg';
+import devopsDiagramImage from '../images/projects/devops-diagram.jpg';
+import devopsPortImage from '../images/projects/devops-port.jpg';
+import docengineInfographicImage from '../images/projects/docengine-infographic.jpg';
+import flexfabOfficeImage from '../images/projects/flexfab-office.jpg';
 import gan7ClassImage from '../images/projects/gan-7-class.jpg';
+import ganCrossDatasetImage from '../images/projects/gan-cross-dataset.jpg';
 import ganEpochImage from '../images/projects/gan-epoch-progression.jpg';
+import hackathonLogoImage from '../images/projects/hackathon-logo.jpg';
 import igniteBenefitsImage from '../images/projects/ignite-benefits.jpg';
 import igniteStageImage from '../images/projects/ignite-stage.jpg';
+import incidentAchMatrixImage from '../images/projects/incident-ach-matrix.jpg';
+import incidentAnalystImage from '../images/projects/incident-analyst.jpg';
+import iotArchitectureImage from '../images/projects/iot-architecture.jpg';
+import iotPipesImage from '../images/projects/iot-pipes.jpg';
+import neo4jBetweennessImage from '../images/projects/neo4j-betweenness.jpg';
+import neo4jClosenessAnomalyImage from '../images/projects/neo4j-closeness-anomaly.jpg';
+import neo4jSchemaImage from '../images/projects/neo4j-schema.jpg';
+import reconNmapImage from '../images/projects/recon-nmap.jpg';
+import reconPadlockImage from '../images/projects/recon-padlock.jpg';
+import securityTrainingImage from '../images/projects/security-training.jpg';
+import wirelessApImage from '../images/projects/wireless-ap.jpg';
 
 /**
  * Long-form content for each project page (/projects/[slug]).
@@ -67,6 +90,17 @@ export const projectDetails: Record<string, ProjectDetail> = {
       },
     ],
     stack: ['PySpark', 'Spark MLlib', 'Hadoop YARN', 'HDFS', 'Kerberos', 'Python'],
+    gallery: [
+      {
+        image: bjPipelineImage,
+        caption: 'The pipeline: load, filter, split, impute, build 45 features, then four experiment routes.',
+      },
+      {image: bjRingRoadsImage, caption: 'Beijing’s ring roads, the basis of the location and ring-zone features.'},
+      {
+        image: bjScalingImage,
+        caption: 'Experiment A vs B: identical accuracy, about 6.6× faster training with standardisation.',
+      },
+    ],
   },
 
   'ble-sensor-network': {
@@ -126,10 +160,6 @@ export const projectDetails: Record<string, ProjectDetail> = {
         caption:
           'Breakdown of a full query: replying first with a 10 ms connection interval cuts the reply from 193 ms to 99 ms.',
       },
-      {
-        image: bleMultihopImage,
-        caption: 'Response time for a direct sensor vs a sensor behind the relay, across relay settings.',
-      },
     ],
   },
 
@@ -181,6 +211,17 @@ export const projectDetails: Record<string, ProjectDetail> = {
       },
     ],
     stack: ['Neo4j', 'Cypher', 'Graph Data Science', 'Louvain / LPA', 'Centrality', 'Connected components'],
+    gallery: [
+      {image: neo4jSchemaImage, caption: 'The e-commerce graph schema in Neo4j Browser.'},
+      {
+        image: neo4jBetweennessImage,
+        caption: 'Top heroes by betweenness centrality, computed with Graph Data Science.',
+      },
+      {
+        image: neo4jClosenessAnomalyImage,
+        caption: 'Heroes whose closeness came out as exactly 1.0: the starting point of the investigation.',
+      },
+    ],
   },
 
   'incident-investigation-ach': {
@@ -221,6 +262,13 @@ export const projectDetails: Record<string, ProjectDetail> = {
       },
     ],
     stack: ['Incident response', 'ACH', 'Sysmon / EDR telemetry', 'Firewall & WAF logs', 'Threat intelligence'],
+    gallery: [
+      {
+        image: incidentAchMatrixImage,
+        caption: 'Excerpt from my ACH matrix: each evidence record rated against hypotheses H1–H3, with the reasoning.',
+      },
+      {image: incidentAnalystImage, caption: 'Security analysis work (illustrative photo).'},
+    ],
   },
 
   'recon-osint-boot2root': {
@@ -250,6 +298,10 @@ export const projectDetails: Record<string, ProjectDetail> = {
       },
     ],
     stack: ['Kali Linux', 'dig / WHOIS', 'Shodan', 'OSINT', 'Nmap', 'Exploitation'],
+    gallery: [
+      {image: reconNmapImage, caption: 'Excerpt from my report: choosing and justifying a bounded Nmap scan.'},
+      {image: reconPadlockImage, caption: 'Security testing (illustrative photo).'},
+    ],
   },
 
   'sales-data-mart': {
@@ -290,6 +342,16 @@ export const projectDetails: Record<string, ProjectDetail> = {
       },
     ],
     stack: ['PostgreSQL 18', 'SQL', 'Star schema', 'OLAP / ROLLUP', 'Materialised views', 'Window functions'],
+    gallery: [
+      {
+        image: datamartStarSchemaImage,
+        caption: 'Star schema: a sales fact table with time, customer and book dimensions.',
+      },
+      {
+        image: datamartRollupImage,
+        caption: 'ROLLUP query and result: sales per country per year, with yearly totals and a grand total.',
+      },
+    ],
   },
 
   'conditional-dcgan': {
@@ -332,7 +394,10 @@ export const projectDetails: Record<string, ProjectDetail> = {
     stack: ['PyTorch', 'DCGAN / cGAN', 'CNNs', 'EMNIST', 'Python'],
     gallery: [
       {image: gan7ClassImage, caption: 'Conditional model: seven character classes, each generated on request.'},
-      {image: gan3ClassImage, caption: 'Conditional model trained on three classes, after 50 epochs.'},
+      {
+        image: ganCrossDatasetImage,
+        caption: 'Generation quality across four datasets at early, middle and final epochs.',
+      },
       {image: ganEpochImage, caption: 'Single-class model for the letter “U”: epoch 11 vs epoch 100.'},
     ],
   },
@@ -375,6 +440,10 @@ export const projectDetails: Record<string, ProjectDetail> = {
       },
     ],
     stack: ['LoRaWAN', 'Cellular backhaul', 'Fog computing', 'MQTT', 'REST', 'SFTP', 'SCADA integration'],
+    gallery: [
+      {image: iotArchitectureImage, caption: 'End-to-end architecture from my executive summary.'},
+      {image: iotPipesImage, caption: 'Water distribution pipework (illustrative photo).'},
+    ],
   },
 
   'containerised-wordpress-stack': {
@@ -403,6 +472,13 @@ export const projectDetails: Record<string, ProjectDetail> = {
       },
     ],
     stack: ['Podman', 'Podman Compose', 'nginx', 'WordPress / PHP-FPM', 'MySQL', 'GitLab', 'Linux'],
+    gallery: [
+      {
+        image: devopsDiagramImage,
+        caption: 'Service layout: nginx in front of WordPress (PHP-FPM) and MySQL on a persistent volume.',
+      },
+      {image: devopsPortImage, caption: 'Containers at scale (illustrative photo).'},
+    ],
   },
 
   'vuw-hackathon-glasshouse': {
@@ -431,6 +507,12 @@ export const projectDetails: Record<string, ProjectDetail> = {
       },
     ],
     stack: ['React', 'TypeScript', 'Vite', 'FastAPI', 'Supabase', 'Python'],
+    gallery: [
+      {
+        image: hackathonLogoImage,
+        caption: 'The glasshouse logo from our team repo: a prism that makes money flows visible.',
+      },
+    ],
     links: [{label: 'View the code on GitHub', href: 'https://github.com/joshuapinpin/glasshouse'}],
   },
 
@@ -504,6 +586,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
       },
     ],
     stack: ['Data-centre planning', 'UPS / power', 'Server consolidation', 'Vendor management', 'Project management'],
+    gallery: [{image: datacentreRacksImage, caption: 'Server racks (illustrative photo).'}],
   },
 
   'cybersecurity-awareness-programme': {
@@ -531,6 +614,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
       },
     ],
     stack: ['Security awareness', 'Training design', 'Security policy', 'ISO 9001/14000'],
+    gallery: [{image: securityTrainingImage, caption: 'Staff training session (illustrative photo).'}],
   },
 
   'conference-system-integration': {
@@ -560,6 +644,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
       },
     ],
     stack: ['AV integration', 'Video conferencing', 'Yamaha / Philips / Lenovo', 'Polycom / Cisco RoomKit'],
+    gallery: [{image: conferenceMeetingImage, caption: 'Conference room (illustrative photo).'}],
   },
 
   'new-branch-infrastructure': {
@@ -581,6 +666,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
       },
     ],
     stack: ['Cisco', 'HP networking', 'Siemens HiPath PBX', 'Structured cabling', 'User onboarding'],
+    gallery: [{image: branchCablingImage, caption: 'Structured network cabling (illustrative photo).'}],
   },
 
   'multi-site-wireless-coverage': {
@@ -607,6 +693,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
       },
     ],
     stack: ['Fortinet', 'FortiAP', 'Enterprise wireless', 'Network design'],
+    gallery: [{image: wirelessApImage, caption: 'Access point and switch (illustrative photo).'}],
   },
 
   'document-automation-engine': {
@@ -643,5 +730,12 @@ export const projectDetails: Record<string, ProjectDetail> = {
       },
     ],
     stack: ['VBA', 'NLP', 'Excel / Office automation', 'Process automation'],
+    gallery: [
+      {
+        image: docengineInfographicImage,
+        caption: 'The headline result: four hours down to eight minutes per document.',
+      },
+      {image: flexfabOfficeImage, caption: 'At Flexfab, where I spent 12 years in IT.'},
+    ],
   },
 };

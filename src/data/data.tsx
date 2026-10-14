@@ -12,7 +12,9 @@ import GithubIcon from '../components/Icon/GithubIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
 import heroImage from '../images/header-background.webp';
 import beijingHousingImage from '../images/portfolio/beijing-housing.jpg';
+import branchNetworkImage from '../images/portfolio/branch-network.jpg';
 import conditionalGanImage from '../images/portfolio/conditional-gan.jpg';
+import conferenceSystemImage from '../images/portfolio/conference-system.jpg';
 import dataCentreImage from '../images/portfolio/data-centre.jpg';
 import devopsContainersImage from '../images/portfolio/devops-containers.jpg';
 import documentEngineImage from '../images/portfolio/document-engine.jpg';
@@ -20,6 +22,8 @@ import hackathonImage from '../images/portfolio/hackathon.jpg';
 import igniteImage from '../images/portfolio/ignite.jpg';
 import iotWaterImage from '../images/portfolio/iot-water.jpg';
 import postgresDataMartImage from '../images/portfolio/postgres-data-mart.jpg';
+import securityAwarenessImage from '../images/portfolio/security-awareness.jpg';
+import wirelessCoverageImage from '../images/portfolio/wireless-coverage.jpg';
 import profilepic from '../images/profilepic.jpg';
 import testimonialImage from '../images/testimonial.webp';
 import {
@@ -168,6 +172,7 @@ export const skills: SkillGroup[] = [
 export const portfolioItems: PortfolioItem[] = [
   {
     title: 'Beijing Housing Price Prediction',
+    category: 'university',
     context: 'AIML427 Big Data · Individual project',
     description:
       'Distributed Spark MLlib pipeline on the ECS Hadoop/YARN cluster. Cleaned 318K Lianjia listings and engineered 45 Beijing-specific features (ring roads, floor taboos, tax policy) with a leakage-free design. Test R² 0.805; feature scaling cut training time 6.6×.',
@@ -176,6 +181,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     title: 'Sales Data Mart & OLAP',
+    category: 'university',
     context: 'SWEN432 Advanced Database Design',
     description:
       'Built a star-schema data mart (time dimension + sales fact) from an operational book-order database, then answered business questions with OLAP aggregates, materialised views and window functions. Load reconciled to the cent against source totals.',
@@ -184,6 +190,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     title: 'Conditional DCGAN',
+    category: 'university',
     context: 'AIML431 Current Topics in AI',
     description:
       'Implemented a DCGAN for EMNIST handwritten characters, then extended it to a conditional GAN that generates a chosen character class on demand, with 3- and 7-class experiments.',
@@ -192,6 +199,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     title: 'Smart Water IoT Architecture',
+    category: 'university',
     context: 'SWEN428 Internet of Things',
     description:
       'Consultancy-style RFP response for a regional water network with 3,500 km of pipes: a hybrid LoRaWAN + cellular design, three traffic classes and a 15-year battery feasibility estimate.',
@@ -200,6 +208,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     title: 'Containerised WordPress Stack',
+    category: 'university',
     context: 'SWEN426 DevOps',
     description:
       'Built a custom CI container image and containerised WordPress with nginx and MySQL using Podman Compose, with persistent storage and a GitLab issue → merge-request workflow.',
@@ -208,6 +217,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     title: 'VUW Hackathon — 2nd Place',
+    category: 'university',
     context: 'Team project · Apr 2026',
     description:
       'Three-day team build of “glasshouse”, a full-stack web app with a Python/Supabase backend and a React + TypeScript frontend. Awarded second place.',
@@ -217,6 +227,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     title: 'Ignite Consulting Project',
+    category: 'university',
     context: 'Student consulting · supported by Deloitte',
     description:
       'Part of a student consulting team that researched and presented “Bridging the Gap” — a proposal for making student talent accessible to small organisations.',
@@ -224,20 +235,58 @@ export const portfolioItems: PortfolioItem[] = [
     image: igniteImage,
   },
   {
+    title: 'Data Centre Renovation & UPS',
+    category: 'industry',
+    context: 'Flexfab · Nov 2024 – Jan 2025',
+    description:
+      'Led a renovation to national Class C standard: consolidated server cabinets and integrated APC 15 kVA + Schneider UPS. Finished 2 months ahead of schedule and commended by the IT VP.',
+    tags: ['Data centre', 'UPS / power', 'Project management'],
+    image: dataCentreImage,
+  },
+  {
+    title: 'Cybersecurity Awareness Programme',
+    category: 'industry',
+    context: 'Flexfab · Aug 2024',
+    description:
+      'Designed and delivered security training for 200+ employees, reaching a 95% post-test pass rate, and set up ongoing spot checks.',
+    tags: ['Security awareness', 'Training', 'ISO 9001/14000'],
+    image: securityAwarenessImage,
+  },
+  {
+    title: 'Conference System Integration',
+    category: 'industry',
+    context: 'Flexfab · May 2023',
+    description:
+      'Designed and deployed an integrated AV and video-conferencing solution in-house. Meeting disruptions fell 82% and outsourcing costs dropped by ¥150K.',
+    tags: ['AV / video conferencing', 'Yamaha / Philips / Lenovo', 'Vendor management'],
+    image: conferenceSystemImage,
+  },
+  {
+    title: 'New Branch Infrastructure',
+    category: 'industry',
+    context: 'Flexfab · Jul 2021',
+    description:
+      'Designed a scalable Cisco/HP network for a new branch, deployed a Siemens HiPath 1100 PBX, and supervised structured cabling and user onboarding.',
+    tags: ['Cisco / HP', 'Telephony', 'Structured cabling'],
+    image: branchNetworkImage,
+  },
+  {
+    title: 'Multi-Site Wireless Coverage',
+    category: 'industry',
+    context: 'Flexfab · Jun 2019',
+    description:
+      '14 FortiAP-423E-S access points across 5,000+ sqm of factory floor, supporting 300+ concurrent devices with zero production-line downtime.',
+    tags: ['Fortinet', 'Wireless', 'Site survey'],
+    image: wirelessCoverageImage,
+  },
+  {
     title: 'Document Automation Engine',
-    context: 'Flexfab · Process automation',
+    category: 'industry',
+    context: 'Flexfab · Sep 2018',
     description:
       'VBA + NLP engine that cut document processing from 4 hours to 8 minutes, saving ~3,500 work-hours a year. Two registered software copyrights.',
     tags: ['VBA', 'NLP', 'Automation'],
     image: documentEngineImage,
-  },
-  {
-    title: 'Data Centre & Network Infrastructure',
-    context: 'Flexfab · IT leadership',
-    description:
-      'Led a Class C data-centre renovation with UPS integration, finished 2 months ahead of schedule. Rolled out multi-site Fortinet wireless for 300+ devices and security training for 200+ staff (95% pass rate).',
-    tags: ['Data centre', 'Networking', 'Security'],
-    image: dataCentreImage,
   },
 ];
 

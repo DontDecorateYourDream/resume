@@ -8,8 +8,21 @@ import {PortfolioItem} from '../../data/dataDef';
 import testimonialImage from '../../images/testimonial.webp';
 import Section from '../Layout/Section';
 
+type Filter = 'all' | PortfolioItem['category'];
+
+const filters: {id: Filter; label: string}[] = [
+  {id: 'all', label: 'All'},
+  {id: 'university', label: 'University'},
+  {id: 'industry', label: 'Industry'},
+];
+
 const Portfolio: FC = memo(() => {
   const [parallaxEnabled, setParallaxEnabled] = useState(false);
+  const [filter, setFilter] = useState<Filter>('all');
+  const visibleItems = useMemo(
+    () => (filter === 'all' ? portfolioItems : portfolioItems.filter(item => item.category === filter)),
+    [filter],
+  );
 
   useEffect(() => {
     const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -28,9 +41,26 @@ const Portfolio: FC = memo(() => {
           <p className="text-sm text-neutral-300">
             Recent work at Victoria University of Wellington, plus highlights from 12 years in industry.
           </p>
+          <div className="mt-2 flex gap-x-2" role="group">
+            {filters.map(({id, label}) => (
+              <button
+                aria-pressed={filter === id}
+                className={classNames(
+                  'rounded-full border px-4 py-1 text-sm font-medium transition-colors',
+                  filter === id
+                    ? 'border-orange-500 bg-orange-500 text-white'
+                    : 'border-neutral-600 text-neutral-300 hover:border-orange-500 hover:text-white',
+                )}
+                key={id}
+                onClick={() => setFilter(id)}
+                type="button">
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {portfolioItems.map((item, index) => (
+          {visibleItems.map((item, index) => (
             <ProjectCard index={index} item={item} key={item.title} />
           ))}
         </div>

@@ -10,6 +10,7 @@ import {
 
 import GithubIcon from '../components/Icon/GithubIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
+import studyBuddyImage from '../images/community/study-buddy.jpg';
 import zealandiaImage from '../images/community/zealandia.jpg';
 import heroImage from '../images/header-background.webp';
 import beijingHousingImage from '../images/portfolio/beijing-housing.jpg';
@@ -417,14 +418,28 @@ export const testimonial: TestimonialSection = {
   imageSrc: testimonialImage,
   testimonials: [
     {
+      name: 'VuwCTF 2026 — 22nd of 123 teams',
+      period: '31 Jul – 2 Aug 2026 · Jeopardy-style CTF, no AI allowed',
+      text: 'Finished in the top 18% with team Jackson_Sue_Mtao (2,317 points) and personally contributed 8/11 of the team’s points, across cryptography, forensics and web exploitation challenges.',
+      image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=400&fit=crop',
+      link: {label: 'See the CTFtime scoreboard', href: 'https://ctftime.org/event/3311'},
+    },
+    {
+      name: 'Study Buddy Programme',
+      period: 'Victoria University of Wellington · 2026',
+      text: 'Joined a study buddy programme for students from many different countries, helping each other settle into university life in Wellington.',
+      image: (studyBuddyImage as unknown as {src: string}).src,
+    },
+    {
       name: 'Zealandia Conservation Volunteer',
-      text: 'Contributing to conservation operations at one of the world\'s first fully fenced urban ecosanctuaries — supporting habitat restoration and wildlife protection for Wellington\'s native species including kiwi, tuatara, and kākā. (Apr 2026 – Present)',
+      period: 'Apr 2026 – present',
+      text: 'Volunteering at one of the world’s first fully fenced urban ecosanctuaries, supporting habitat restoration and protection for native species including kiwi, tuatara and kākā.',
       image: (zealandiaImage as unknown as {src: string}).src,
     },
     {
-      name: 'VuwCTF Cybersecurity Competition',
-      text: 'Ranked 20th out of 100+ participating teams (Aug 2026). Worked closely in a cross-functional team throughout this demanding 2-day CTF event, solving multiple hard-difficulty challenges in cryptography, forensics, and web exploitation.',
-      image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=200&h=200&fit=crop',
+      name: 'Kitea Impact Programme & Ako in Action',
+      period: 'Victoria University of Wellington · 2026',
+      text: 'Took part in two VUW community programmes, working alongside people from different backgrounds and learning the values that underpin community life in Aotearoa.',
     },
   ],
 };
